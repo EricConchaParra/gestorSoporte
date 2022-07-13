@@ -16,8 +16,7 @@ namespace GestorSoporte
         {
             try
             {
-
-                string key = "untouchable"; //llave para encriptar datos
+                string key = JsonTool.searchJsonFor(FileTool.readFile("config.json"), "key"); //llave para encriptar datos
 
                 byte[] keyArray;
 
@@ -59,7 +58,7 @@ namespace GestorSoporte
         {
             try
             {
-                string key = "untouchable";
+                string key = JsonTool.searchJsonFor(FileTool.readFile("config.json"), "key"); //llave para encriptar datos
                 byte[] keyArray;
                 byte[] Array_a_Descifrar = Convert.FromBase64String(textoEncriptado);
 
