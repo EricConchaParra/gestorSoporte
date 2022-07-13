@@ -17,7 +17,7 @@ namespace GestorSoporte
             try
             {
 
-                string key = "untouchable"; //llave para encriptar datos
+                string key = "ENTERYOURKEY"; //llave para encriptar datos
 
                 byte[] keyArray;
 
