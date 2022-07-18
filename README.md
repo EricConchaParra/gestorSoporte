@@ -30,7 +30,8 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 Por construir
 
 ## Releases
-### 1.0.1 (18-07-2022)
+### 1.1.0 (18-07-2022)
 - Reemplazado SQLite por archivo JSON para los datos de inicio de sesión.
-- `user` y `pass` están encriptados por ahora. Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt) para crear el string encriptado.
+- `user` y `pass` están encriptados por ahora.
+    - Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt) para crear el string encriptado.
 - Próxima versión tendrá estos campos no encriptados.
