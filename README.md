@@ -10,8 +10,20 @@ De momento permite conectar por SSH (Putty) y SCP (WinSCP) usando los usuarios y
 Tiene mucho que mejorar, pero hasta ahora es útil y funcional. Lo construí hace bastante tiempo, por lo que se que puedo mejorar mucho el código... estaré actualizando.
 
 ## Consideraciones
-- Por ahora usa una base de datos SQLite para contener los datos de inicio de sesión (prontamente se usarán archivos JSON)
 - La carpeta `docs` tiene un un archivo JSON y un DLL que deben estar en la raíz del .exe para funcionar.
+
+## Archivos de Configuración
+En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado config.json. Dentro tendrá la siguiente estructura:
+```json
+{
+  "ip" : "192.168.2.11",
+  "puerto" : "3306",
+  "user" : "MIUSER",
+  "pass" : "MIPASS",
+  "database" : "smanager"
+}
+```
+**debug**: `0` sin debug. `1` se muestran mensajes de debug.
 
 ## Documentación
 Por construir
