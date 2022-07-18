@@ -16,6 +16,7 @@ Tiene mucho que mejorar, pero hasta ahora es útil y funcional. Lo construí hac
 En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado config.json. Dentro tendrá la siguiente estructura:
 ```json
 {
+  "key" : "ENTERYOURKEY",
   "ip" : "192.168.2.11",
   "puerto" : "3306",
   "user" : "MIUSER",
