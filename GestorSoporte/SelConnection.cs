@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,16 +22,7 @@ namespace GestorSoporte
 
         private void SelConnection_Load(object sender, EventArgs e)
         {
-            try
-            {
-                cbConnections.DataSource = SqLite.VerConexiones();
-                cbConnections.DisplayMember = "nombre";
-                cbConnections.ValueMember = "id";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: "+ ex, "SqLite");
-            }
+
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
@@ -42,15 +32,8 @@ namespace GestorSoporte
 
         private void Conectar()
         {
-            string id_conection = cbConnections.SelectedValue.ToString();
             string user = txtUser.Text == null ? "" : Seguridad.Encriptar(txtUser.Text.ToLower());
             string pass = txtpass.Text == null ? "" : Seguridad.Encriptar(txtpass.Text.ToLower());
-            DataTable DT = new DataTable();
-            DT = SqLite.VerDatosConexion(id_conection);
-            row = DT.Rows[0];
-            row["ip"] = Seguridad.DesEncriptar(row["ip"].ToString());
-            row["user"] = Seguridad.DesEncriptar(row["user"].ToString());
-            row["pass"] = Seguridad.DesEncriptar(row["pass"].ToString());
 
             int usuOk = MySql.VerificaUsuario(user, pass);
 

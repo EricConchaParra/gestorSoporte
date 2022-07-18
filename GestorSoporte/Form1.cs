@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
 using MySql.Data.MySqlClient;
 
 namespace GestorSoporte
@@ -59,17 +58,7 @@ namespace GestorSoporte
                 MessageBox.Show("No reconozco tipo de usuario");
             }
 
-
-            //Verifico que tengo todos las variables antes de continuar
-            if (conData["ip"] != null && conData["user"] != null && conData["pass"] != null && conData["puerto"] != null)
-            {
-                Carga();
-            }
-            else
-            {
-                alerta.error("Error", "No se cargaron los datos de conexión.");
-            }
-
+            Carga();
         }
 
         

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +12,44 @@ namespace GestorSoporte
     class MySql
     {
 
+        public static DataRow datosSrv()
+        {
+            //Consulta los datos para conectar DB
+            string json = FileTool.readFile("config.json"); //Usar la "@" permite una ruta con single "\"
+
+            //Crea una datatable
+            DataTable coneccion = new DataTable();
+            coneccion.Columns.Add("ip");
+            coneccion.Columns.Add("puerto");
+            coneccion.Columns.Add("user");
+            coneccion.Columns.Add("pass");
+            coneccion.Columns.Add("database");
+            DataRow data = coneccion.NewRow();
+            data["ip"] = JsonTool.searchJsonFor(json, "ip");
+            data["puerto"] = JsonTool.searchJsonFor(json, "puerto");
+            data["user"] = JsonTool.searchJsonFor(json, "user");
+            data["pass"] = JsonTool.searchJsonFor(json, "pass");
+            data["database"] = JsonTool.searchJsonFor(json, "database");
+            coneccion.Rows.Add(data);
+
+            return coneccion.Rows[0];
+
+        }
+        public static string connectString()
+        {
+            string cnString = "";
+            DataRow conData = datosSrv();
+
+            cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
+                                "DATABASE=" + conData["database"] + ";" + "UID=" + Seguridad.DesEncriptar(conData["user"].ToString()) + ";" + "PASSWORD=" + Seguridad.DesEncriptar(conData["pass"].ToString()) + ";";
+                
+            return cnString;
+        }
+
 
         public static DataTable VerClientes()
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -57,10 +87,7 @@ namespace GestorSoporte
 
         public static int VerificaUsuario(string user, string pass)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -98,10 +125,7 @@ namespace GestorSoporte
 
         public static DataRow AccesoUsuario(string user, string pass)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -137,10 +161,7 @@ namespace GestorSoporte
 
         public static DataTable VerTodosClientes()
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -178,10 +199,7 @@ namespace GestorSoporte
 
         public static DataTable BuscaClientes(string busqueda)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -218,10 +236,7 @@ namespace GestorSoporte
 
         public static DataTable BuscaTodosClientes(string busqueda)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -260,10 +275,7 @@ namespace GestorSoporte
 
         public static int CuentaSucursalesCliente(string id_cliente)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -302,10 +314,7 @@ namespace GestorSoporte
 
         public static DataTable VerSucursalesCliente(string id_cliente)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -339,10 +348,7 @@ namespace GestorSoporte
 
         public static DataTable Queries(string tipo_consulta)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -378,11 +384,7 @@ namespace GestorSoporte
 
         public static DataTable DatosSucursal(string id_sucursal)
         {
-
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -416,10 +418,7 @@ namespace GestorSoporte
 
         public static DataTable DatosCasaMatriz(string id_sucursal)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -455,10 +454,7 @@ namespace GestorSoporte
 
         public static DataTable DatosCliente(string rut_cliente)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -493,10 +489,7 @@ namespace GestorSoporte
 
         public static DataTable VerFuncionarios()
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -532,10 +525,7 @@ namespace GestorSoporte
 
         public static void borraSucursal(string id_sucursal)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -566,10 +556,7 @@ namespace GestorSoporte
 
         public static string verNotasCliente (string id_cliente)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -605,12 +592,10 @@ namespace GestorSoporte
 
         public static void grabaNotasCliente(string notas1, string fk_cliente1)
         {
-            DataRow conData = SelConnection.conData;
             string notas = notas1;
             string rut = fk_cliente1;
 
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -639,10 +624,7 @@ namespace GestorSoporte
 
         public static DataTable VerQuery(int id_query)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -675,12 +657,9 @@ namespace GestorSoporte
 
         public static void BorraQuery(int id_query)
         {
-            DataRow conData = SelConnection.conData;
             int id = id_query;
-
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -709,10 +688,7 @@ namespace GestorSoporte
 
         public static DataTable VerEnlances()
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -746,10 +722,7 @@ namespace GestorSoporte
 
         public static String Ayuda(string tema)
         {
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 

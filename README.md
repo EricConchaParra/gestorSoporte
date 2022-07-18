@@ -21,10 +21,16 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
   "puerto" : "3306",
   "user" : "MIUSER",
   "pass" : "MIPASS",
-  "database" : "smanager"
+  "database" : "s_manager"
 }
 ```
-**debug**: `0` sin debug. `1` se muestran mensajes de debug.
+`key`: Clave que se utiliza para la encriptación de la información
 
 ## Documentación
 Por construir
+
+## Releases
+### 1.0.1 (18-07-2022)
+- Reemplazado SQLite por archivo JSON para los datos de inicio de sesión.
+- `user` y `pass` están encriptados por ahora. Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt) para crear el string encriptado.
+- Próxima versión tendrá estos campos no encriptados.
