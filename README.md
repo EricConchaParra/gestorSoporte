@@ -16,6 +16,7 @@ Tiene mucho que mejorar, pero hasta ahora es útil y funcional. Lo construí hac
 En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado config.json. Dentro tendrá la siguiente estructura:
 ```json
 {
+  "encrypted" : "0",
   "key" : "ENTERYOURKEY",
   "ip" : "192.168.2.11",
   "puerto" : "3306",
@@ -24,12 +25,18 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
   "database" : "s_manager"
 }
 ```
-`key`: Clave que se utiliza para la encriptación de la información
+`encripted` : `"0"` indica que `user` y `pass` no están encriptados (solo aplica en este archivo). Si `"1"` entonces datos están encriptados usando la `key` indicada.
+
+`key`: Clave que se utiliza para la encriptación de la información en Base de Datos y en este archivo el `user` y `pass`
 
 ## Documentación
-Por construir
+- Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt) para crear el string encriptado.
 
 ## Releases
+
+### 1.1.1 (20-07-2022)
+- `user` y `pass` en el archivo config.json pueden estar encriptados o no estarlo, según el parámetro `encrypted` (asi no es necesario crear el string).
+- Login ahora tiene hasta 5 reintentos por error (antes salía al primer fallo).
 ### 1.1.0 (18-07-2022)
 - Reemplazado SQLite por archivo JSON para los datos de inicio de sesión.
 - `user` y `pass` están encriptados por ahora.

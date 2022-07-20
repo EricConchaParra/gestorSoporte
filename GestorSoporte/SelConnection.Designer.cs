@@ -121,7 +121,7 @@
             this.Name = "SelConnection";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Elegir Conexión";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.SelConnection_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

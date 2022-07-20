@@ -25,10 +25,21 @@ namespace GestorSoporte
             coneccion.Columns.Add("pass");
             coneccion.Columns.Add("database");
             DataRow data = coneccion.NewRow();
+            bool encrypted = JsonTool.searchJsonFor(json,"encrypted") == "1" ? true : false;
             data["ip"] = JsonTool.searchJsonFor(json, "ip");
             data["puerto"] = JsonTool.searchJsonFor(json, "puerto");
-            data["user"] = JsonTool.searchJsonFor(json, "user");
-            data["pass"] = JsonTool.searchJsonFor(json, "pass");
+
+            if (encrypted)
+            {
+                data["user"] = Seguridad.DesEncriptar(JsonTool.searchJsonFor(json, "user"));
+                data["pass"] = Seguridad.DesEncriptar(JsonTool.searchJsonFor(json, "pass"));
+            }
+            else
+            {
+                data["user"] = JsonTool.searchJsonFor(json, "user");
+                data["pass"] = JsonTool.searchJsonFor(json, "pass");
+            }
+
             data["database"] = JsonTool.searchJsonFor(json, "database");
             coneccion.Rows.Add(data);
 
@@ -41,7 +52,7 @@ namespace GestorSoporte
             DataRow conData = datosSrv();
 
             cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE=" + conData["database"] + ";" + "UID=" + Seguridad.DesEncriptar(conData["user"].ToString()) + ";" + "PASSWORD=" + Seguridad.DesEncriptar(conData["pass"].ToString()) + ";";
+                                "DATABASE=" + conData["database"] + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
                 
             return cnString;
         }

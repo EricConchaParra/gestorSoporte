@@ -18,27 +18,39 @@ namespace GestorSoporte
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Llamo al Form de Usaurio/Conexion
-            SelConnection selc = new SelConnection();
-            selc.ShowDialog();
+            DialogResult done = DialogResult.Abort;
+            int intentos = 0;
 
-            //Si está todo bien llamo al Form Principal
-            if(selc.DialogResult == DialogResult.OK)
-            { 
-                Application.Run(new Form1());
-            }
-            else
+            do
             {
-                if (selc.DialogResult == DialogResult.Cancel)
+                //Llamo al Form de Usaurio/Conexion
+                SelConnection selc = new SelConnection();
+                selc.ShowDialog();
+
+                //Si está todo bien llamo al Form Principal
+                if (selc.DialogResult == DialogResult.OK)
                 {
-                    Application.Exit();
+                    done = selc.DialogResult;
+                    Application.Run(new Form1());
+                }
+                else
+                {
+                    if (selc.DialogResult == DialogResult.Cancel)
+                    {
+                        Application.Exit();
+                        done = DialogResult.OK;
+                    }
+
+                    else
+                    {
+                        alerta.error("Alerta", "Usuario y/o Contraseña incorrectos");
+                        intentos++;
+                        if (intentos == 5) { done = DialogResult.OK; }
+                    }
                 }
 
-                else
-                { 
-                    alerta.error("Alerta", "Usuario y/o Contraseña incorrectos");
-                }
-            }
+            } while (done != DialogResult.OK);
+            
 
         }
     }
