@@ -30,7 +30,7 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 `key`: Clave que se utiliza para la encriptación de la información en Base de Datos y en este archivo el `user` y `pass`
 
 ## Documentación
-- Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado.
+- Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado ([ver código en GitHub](https://github.com/EricConchaParra/encrypt))
 
 ## Releases
 
