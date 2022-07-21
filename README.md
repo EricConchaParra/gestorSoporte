@@ -30,7 +30,7 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 `key`: Clave que se utiliza para la encriptación de la información en Base de Datos y en este archivo el `user` y `pass`
 
 ## Documentación
-- Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt) para crear el string encriptado.
+- Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado ([ver código en GitHub](https://github.com/EricConchaParra/encrypt))
 
 ## Releases
 
@@ -40,5 +40,5 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 ### 1.1.0 (18-07-2022)
 - Reemplazado SQLite por archivo JSON para los datos de inicio de sesión.
 - `user` y `pass` están encriptados por ahora.
-    - Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt) para crear el string encriptado.
+    - Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado.
 - Próxima versión tendrá estos campos no encriptados.
