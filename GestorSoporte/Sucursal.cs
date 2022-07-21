@@ -273,13 +273,8 @@ namespace GestorSoporte
 
             //Graba los datos en MySQL
 
-            //trae los datos de conexion, dependiendo de donde sea
-            DataRow conData = SelConnection.conData;
-
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
-
-            MySqlConnection cn = new MySqlConnection(cnString);
+            
+            MySqlConnection cn = new MySqlConnection(MySql.connectString());
 
             string sCmd = "";
             
