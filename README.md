@@ -32,7 +32,7 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 ## Documentación
 - Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado ([ver código en GitHub](https://github.com/EricConchaParra/encrypt))
 
-## Releases
+## Versiones
 
 ### 1.1.1 (20-07-2022)
 - `user` y `pass` en el archivo config.json pueden estar encriptados o no estarlo, según el parámetro `encrypted` (asi no es necesario crear el string).
