@@ -101,10 +101,6 @@ namespace GestorSoporte
             rowGestorDte1["estado"] = "Inactivo";
             dtGestorDte.Rows.Add(rowGestorDte1);
 
-            cbGestorDte.DisplayMember = "estado";
-            cbGestorDte.ValueMember = "cod";
-            cbGestorDte.DataSource = dtGestorDte;
-
             //Ticket de Soporte
             DataTable dtTicket = new DataTable();
             dtTicket.Columns.Add("cod");
@@ -120,9 +116,6 @@ namespace GestorSoporte
             rowTicket1["estado"] = "Inactivo";
             dtTicket.Rows.Add(rowTicket1);
 
-            cbTicket.DisplayMember = "estado";
-            cbTicket.ValueMember = "cod";
-            cbTicket.DataSource = dtTicket;
 
 
 
@@ -198,20 +191,6 @@ namespace GestorSoporte
             txtMysqlAccesoPass.Text = sucursal["acceso_pass_mysql"].ToString();
             txtDteDb.Text = sucursal["dte_db_mysql"].ToString();
             txtErpDb.Text = sucursal["erp_db_mysql"].ToString();
-            //Gestor DTE
-            cbGestorDte.SelectedValue = sucursal["gestor_dte"].ToString();
-            txtPuertoPlay.Text = sucursal["puerto_play"].ToString();
-            txtGestorDteUser.Text = sucursal["gestor_dte_user"].ToString();
-            txtGestorDtePass.Text = sucursal["gestor_dte_pass"].ToString();
-            txtRutaPlay.Text = sucursal["play_path"].ToString();
-            txtRutaGestorDte.Text = sucursal["dte_path"].ToString();
-            txtIdScreen.Text = sucursal["screen_id"].ToString();
-            txtEspera.Text = sucursal["seg_espera"].ToString();
-            //Ticket de Soporte
-            cbTicket.SelectedValue = sucursal["ticket"].ToString();
-            txtUrlTicket.Text = sucursal["ticket_url"].ToString();
-            txtTicketUser.Text = sucursal["ticket_user"].ToString();
-            txtTicketPass.Text = sucursal["ticket_pass"].ToString();
         }
 
 
@@ -255,21 +234,6 @@ namespace GestorSoporte
             string acceso_pass_mysql = Seguridad.Encriptar(txtMysqlAccesoPass.Text);
             string dte_db_mysql = txtDteDb.Text;
             string erp_db_mysql = txtErpDb.Text;
-            //Gestor DTE
-            string gestor_dte = cbGestorDte.SelectedValue.ToString();
-            string puerto_play = txtPuertoPlay.Text;
-            string gestor_dte_user = Seguridad.Encriptar(txtGestorDteUser.Text);
-            string gestor_dte_pass = Seguridad.Encriptar(txtGestorDtePass.Text);
-            string play_path = txtRutaPlay.Text;
-            string dte_path = txtRutaGestorDte.Text;
-            string screen_id = txtIdScreen.Text;
-            string seg_espera = txtEspera.Text;
-            //Gestor DTE
-            string ticket = cbTicket.SelectedValue.ToString();
-            string ticket_url = txtUrlTicket.Text;
-            string ticket_user = txtTicketUser.Text;
-            string ticket_pass = txtTicketPass.Text;
-
 
             //Graba los datos en MySQL
 
@@ -300,22 +264,10 @@ namespace GestorSoporte
                     " acceso_user_mysql," +
                     " acceso_pass_mysql," +
                     " dte_db_mysql," +
-                    " erp_db_mysql," +
-                    " gestor_dte," +
-                    " gestor_dte_user," +
-                    " gestor_dte_pass," +
-                    " play_path," +
-                    " dte_path," +
-                    " screen_id," +
-                    " puerto_play," +
-                    " seg_espera," +
-                    " ticket," +
-                    " ticket_url," +
-                    " ticket_user," +
-                    " ticket_pass)" +
+                    " erp_db_mysql)" +
                     " VALUES" +
                     " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}'," +
-                    " '{17}','{18}','{19}','{20}','{21}','{22}','{23}','{24}','{25}','{26}','{27}','{28}','{29}','{30}');", 
+                    " '{17}','{18}');", 
                     rut_cliente,
                     sucursal_correl,
                     sucursal_nombre,
@@ -334,19 +286,7 @@ namespace GestorSoporte
                     acceso_user_mysql,
                     acceso_pass_mysql,
                     dte_db_mysql,
-                    erp_db_mysql,
-                    gestor_dte,
-                    gestor_dte_user,
-                    gestor_dte_pass,
-                    play_path,
-                    dte_path,
-                    screen_id,
-                    puerto_play,
-                    seg_espera,
-                    ticket,
-                    ticket_url,
-                    ticket_user,
-                    ticket_pass);
+                    erp_db_mysql);
 
 
             }
@@ -369,19 +309,7 @@ namespace GestorSoporte
                     " acceso_user_mysql = '{13}'," +
                     " acceso_pass_mysql = '{14}'," +
                     " dte_db_mysql = '{15}'," +
-                    " erp_db_mysql = '{16}'," +
-                    " gestor_dte = '{17}'," +
-                    " gestor_dte_user = '{18}'," +
-                    " gestor_dte_pass = '{19}'," +
-                    " play_path ='{20}'," +
-                    " dte_path = '{21}'," +
-                    " screen_id = '{22}'," +
-                    " puerto_play = '{23}'," +
-                    " seg_espera = '{24}'," +
-                    " ticket = '{25}'," +
-                    " ticket_url = '{26}'," +
-                    " ticket_user = '{27}'," +
-                    " ticket_pass = '{28}'" +
+                    " erp_db_mysql = '{16}'" +
                     " where id = '{29}';",
                     sucursal_nombre,
                     ip,
@@ -399,20 +327,7 @@ namespace GestorSoporte
                     acceso_user_mysql,
                     acceso_pass_mysql,
                     dte_db_mysql,
-                    erp_db_mysql,
-                    gestor_dte,
-                    gestor_dte_user,
-                    gestor_dte_pass,
-                    play_path,
-                    dte_path,
-                    screen_id,
-                    puerto_play,
-                    seg_espera,
-                    ticket,
-                    ticket_url,
-                    ticket_user,
-                    ticket_pass,
-                    id_sucursal);
+                    erp_db_mysql);
              
             }
 
@@ -438,6 +353,11 @@ namespace GestorSoporte
                 cn.Close();
             }
             this.Close();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }
