@@ -105,6 +105,9 @@ namespace GestorSoporte
             sucData["acceso_pass_mysql"] = DesEncriptar(sucData["acceso_pass_mysql"].ToString());
             sucData["gestor_dte_user"] = DesEncriptar(sucData["gestor_dte_user"].ToString());
             sucData["gestor_dte_pass"] = DesEncriptar(sucData["gestor_dte_pass"].ToString());
+            sucData["rdpUrl"] = DesEncriptar(sucData["rdpUrl"].ToString());
+            sucData["rdpUser"] = DesEncriptar(sucData["rdpUser"].ToString());
+            sucData["rdpPass"] = DesEncriptar(sucData["rdpPass"].ToString());
             return sucData;
         }
 
@@ -124,6 +127,9 @@ namespace GestorSoporte
             sucData["acceso_pass_mysql"] = Encriptar(sucData["acceso_pass_mysql"].ToString());
             sucData["gestor_dte_user"] = Encriptar(sucData["gestor_dte_user"].ToString());
             sucData["gestor_dte_pass"] = Encriptar(sucData["gestor_dte_pass"].ToString());
+            sucData["rdpUrl"] = Encriptar(sucData["rdpUrl"].ToString());
+            sucData["rdpUser"] = Encriptar(sucData["rdpUser"].ToString());
+            sucData["rdpPass"] = Encriptar(sucData["rdpPass"].ToString());
             return sucData;
         }
 

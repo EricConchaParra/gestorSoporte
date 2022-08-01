@@ -69,15 +69,13 @@ namespace GestorSoporte
                 {
                     DB = row["erp_db_mysql"].ToString();
                 }
-                cnString = "SERVER=" + row["ip"] + ";" + "PORT=" + row["puerto_mysql"] + ";" +
-                "DATABASE=" + DB + ";" + "UID=" + row["acceso_user_mysql"] + ";" + "PASSWORD=" + row["acceso_pass_mysql"] + "; Convert Zero Datetime=True;";
+                cnString = MySql.connectString() + "; Convert Zero Datetime=True;";
             }
             else
             {
                 DataRow conData = SelConnection.conData;
 
-                cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                "DATABASE=s_manager;" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + "; Convert Zero Datetime=True;";
+                cnString = MySql.connectString() + "; Convert Zero Datetime=True;";
             }
 
             try

@@ -30,31 +30,32 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sucursal));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbMysql = new System.Windows.Forms.ComboBox();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.txtSucNombre = new System.Windows.Forms.TextBox();
             this.txtSucursalCorrel = new System.Windows.Forms.TextBox();
             this.txtEmpresa = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cbSsh = new System.Windows.Forms.ComboBox();
             this.labelNSuc = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.gbSsh = new System.Windows.Forms.GroupBox();
             this.txtPuertoSsh = new System.Windows.Forms.TextBox();
             this.txtRegularPass = new System.Windows.Forms.TextBox();
             this.txtRegularUser = new System.Windows.Forms.TextBox();
             this.txtRootPass = new System.Windows.Forms.TextBox();
             this.txtRootUser = new System.Windows.Forms.TextBox();
             this.cbSshRoot = new System.Windows.Forms.ComboBox();
-            this.cbSsh = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbMysql = new System.Windows.Forms.ComboBox();
+            this.gbMySql = new System.Windows.Forms.GroupBox();
             this.txtErpDb = new System.Windows.Forms.TextBox();
             this.txtDteDb = new System.Windows.Forms.TextBox();
             this.txtMysqlAccesoPass = new System.Windows.Forms.TextBox();
@@ -69,26 +70,49 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmCrear = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmModificar = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSlackChannel = new System.Windows.Forms.TextBox();
-            this.cbSlack = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.cbNewRelic = new System.Windows.Forms.CheckBox();
+            this.cbSlack = new System.Windows.Forms.CheckBox();
+            this.txtSlackChannel = new System.Windows.Forms.TextBox();
+            this.gbPersonalizado = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtNombreUrl = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtUrl = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtComando = new System.Windows.Forms.TextBox();
+            this.txtNombreComando = new System.Windows.Forms.TextBox();
+            this.gbUrl = new System.Windows.Forms.GroupBox();
+            this.cbRdp = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.gbRdp = new System.Windows.Forms.GroupBox();
+            this.labelusu = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtRdpUser = new System.Windows.Forms.TextBox();
+            this.txtRdpPass = new System.Windows.Forms.TextBox();
+            this.txtRdpUrl = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbSsh.SuspendLayout();
+            this.gbMySql.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.gbPersonalizado.SuspendLayout();
+            this.gbUrl.SuspendLayout();
+            this.gbRdp.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.PowderBlue;
+            this.groupBox1.Controls.Add(this.cbRdp);
+            this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.cbMysql);
             this.groupBox1.Controls.Add(this.txtIP);
             this.groupBox1.Controls.Add(this.txtSucNombre);
@@ -107,6 +131,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Identificación";
+            // 
+            // cbMysql
+            // 
+            this.cbMysql.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMysql.FormattingEnabled = true;
+            this.cbMysql.Location = new System.Drawing.Point(10, 175);
+            this.cbMysql.Name = "cbMysql";
+            this.cbMysql.Size = new System.Drawing.Size(100, 21);
+            this.cbMysql.TabIndex = 15;
+            this.cbMysql.SelectedIndexChanged += new System.EventHandler(this.cbMysql_SelectedIndexChanged);
             // 
             // txtIP
             // 
@@ -155,6 +189,17 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "IP";
             // 
+            // cbSsh
+            // 
+            this.cbSsh.BackColor = System.Drawing.SystemColors.Control;
+            this.cbSsh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSsh.FormattingEnabled = true;
+            this.cbSsh.Location = new System.Drawing.Point(124, 126);
+            this.cbSsh.Name = "cbSsh";
+            this.cbSsh.Size = new System.Drawing.Size(100, 21);
+            this.cbSsh.TabIndex = 7;
+            this.cbSsh.SelectedIndexChanged += new System.EventHandler(this.cbSsh_SelectedIndexChanged);
+            // 
             // labelNSuc
             // 
             this.labelNSuc.AutoSize = true;
@@ -173,27 +218,45 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Empresa";
             // 
-            // groupBox2
+            // label5
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.LemonChiffon;
-            this.groupBox2.Controls.Add(this.txtPuertoSsh);
-            this.groupBox2.Controls.Add(this.txtRegularPass);
-            this.groupBox2.Controls.Add(this.txtRegularUser);
-            this.groupBox2.Controls.Add(this.txtRootPass);
-            this.groupBox2.Controls.Add(this.txtRootUser);
-            this.groupBox2.Controls.Add(this.cbSshRoot);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(13, 245);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(323, 219);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Acceso SSH";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(124, 110);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "SSH ?";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 158);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "MySQL?";
+            // 
+            // gbSsh
+            // 
+            this.gbSsh.BackColor = System.Drawing.Color.LemonChiffon;
+            this.gbSsh.Controls.Add(this.txtPuertoSsh);
+            this.gbSsh.Controls.Add(this.txtRegularPass);
+            this.gbSsh.Controls.Add(this.txtRegularUser);
+            this.gbSsh.Controls.Add(this.txtRootPass);
+            this.gbSsh.Controls.Add(this.txtRootUser);
+            this.gbSsh.Controls.Add(this.cbSshRoot);
+            this.gbSsh.Controls.Add(this.label11);
+            this.gbSsh.Controls.Add(this.label10);
+            this.gbSsh.Controls.Add(this.label9);
+            this.gbSsh.Controls.Add(this.label8);
+            this.gbSsh.Controls.Add(this.label7);
+            this.gbSsh.Controls.Add(this.label6);
+            this.gbSsh.Location = new System.Drawing.Point(13, 245);
+            this.gbSsh.Name = "gbSsh";
+            this.gbSsh.Size = new System.Drawing.Size(323, 219);
+            this.gbSsh.TabIndex = 1;
+            this.gbSsh.TabStop = false;
+            this.gbSsh.Text = "Acceso SSH";
             // 
             // txtPuertoSsh
             // 
@@ -238,16 +301,6 @@
             this.cbSshRoot.Name = "cbSshRoot";
             this.cbSshRoot.Size = new System.Drawing.Size(135, 21);
             this.cbSshRoot.TabIndex = 8;
-            // 
-            // cbSsh
-            // 
-            this.cbSsh.BackColor = System.Drawing.SystemColors.Control;
-            this.cbSsh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSsh.FormattingEnabled = true;
-            this.cbSsh.Location = new System.Drawing.Point(124, 126);
-            this.cbSsh.Name = "cbSsh";
-            this.cbSsh.Size = new System.Drawing.Size(93, 21);
-            this.cbSsh.TabIndex = 7;
             // 
             // label11
             // 
@@ -303,47 +356,29 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Root?";
             // 
-            // label5
+            // gbMySql
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(124, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "SSH ?";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.LightGreen;
-            this.groupBox3.Controls.Add(this.txtErpDb);
-            this.groupBox3.Controls.Add(this.txtDteDb);
-            this.groupBox3.Controls.Add(this.txtMysqlAccesoPass);
-            this.groupBox3.Controls.Add(this.txtMysqlAccesoUser);
-            this.groupBox3.Controls.Add(this.txtMysqlRootPass);
-            this.groupBox3.Controls.Add(this.txtMysqlRootUser);
-            this.groupBox3.Controls.Add(this.txtPuertoMysql);
-            this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Location = new System.Drawing.Point(342, 30);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(323, 209);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Servidor MySQL / MariaDB";
-            // 
-            // cbMysql
-            // 
-            this.cbMysql.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMysql.FormattingEnabled = true;
-            this.cbMysql.Location = new System.Drawing.Point(10, 175);
-            this.cbMysql.Name = "cbMysql";
-            this.cbMysql.Size = new System.Drawing.Size(100, 21);
-            this.cbMysql.TabIndex = 15;
+            this.gbMySql.BackColor = System.Drawing.Color.LightGreen;
+            this.gbMySql.Controls.Add(this.txtErpDb);
+            this.gbMySql.Controls.Add(this.txtDteDb);
+            this.gbMySql.Controls.Add(this.txtMysqlAccesoPass);
+            this.gbMySql.Controls.Add(this.txtMysqlAccesoUser);
+            this.gbMySql.Controls.Add(this.txtMysqlRootPass);
+            this.gbMySql.Controls.Add(this.txtMysqlRootUser);
+            this.gbMySql.Controls.Add(this.txtPuertoMysql);
+            this.gbMySql.Controls.Add(this.label19);
+            this.gbMySql.Controls.Add(this.label18);
+            this.gbMySql.Controls.Add(this.label17);
+            this.gbMySql.Controls.Add(this.label16);
+            this.gbMySql.Controls.Add(this.label15);
+            this.gbMySql.Controls.Add(this.label14);
+            this.gbMySql.Controls.Add(this.label13);
+            this.gbMySql.Location = new System.Drawing.Point(342, 30);
+            this.gbMySql.Name = "gbMySql";
+            this.gbMySql.Size = new System.Drawing.Size(323, 209);
+            this.gbMySql.TabIndex = 2;
+            this.gbMySql.TabStop = false;
+            this.gbMySql.Text = "Servidor MySQL / MariaDB";
             // 
             // txtErpDb
             // 
@@ -457,15 +492,6 @@
             this.label13.TabIndex = 1;
             this.label13.Text = "Puerto MySQL";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 158);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "MySQL?";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -474,7 +500,7 @@
             this.tsmSalir});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(673, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(674, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -502,32 +528,35 @@
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.groupBox6.Controls.Add(this.label20);
             this.groupBox6.Controls.Add(this.cbNewRelic);
             this.groupBox6.Controls.Add(this.cbSlack);
             this.groupBox6.Controls.Add(this.txtSlackChannel);
-            this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Location = new System.Drawing.Point(342, 247);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(323, 217);
+            this.groupBox6.Size = new System.Drawing.Size(323, 84);
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Notificaciones";
             // 
-            // label2
+            // label20
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Slack Channel";
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(133, 25);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(14, 13);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "#";
             // 
-            // txtSlackChannel
+            // cbNewRelic
             // 
-            this.txtSlackChannel.Location = new System.Drawing.Point(13, 67);
-            this.txtSlackChannel.Name = "txtSlackChannel";
-            this.txtSlackChannel.Size = new System.Drawing.Size(159, 20);
-            this.txtSlackChannel.TabIndex = 1;
+            this.cbNewRelic.AutoSize = true;
+            this.cbNewRelic.Location = new System.Drawing.Point(13, 48);
+            this.cbNewRelic.Name = "cbNewRelic";
+            this.cbNewRelic.Size = new System.Drawing.Size(240, 17);
+            this.cbNewRelic.TabIndex = 3;
+            this.cbNewRelic.Text = "¿Lanza alertas en NewRelic? (Próximamente)";
+            this.cbNewRelic.UseVisualStyleBackColor = true;
             // 
             // cbSlack
             // 
@@ -538,25 +567,201 @@
             this.cbSlack.TabIndex = 2;
             this.cbSlack.Text = "¿Notifica en Slack?";
             this.cbSlack.UseVisualStyleBackColor = true;
+            this.cbSlack.CheckedChanged += new System.EventHandler(this.cbSlack_CheckedChanged);
             // 
-            // cbNewRelic
+            // txtSlackChannel
             // 
-            this.cbNewRelic.AutoSize = true;
-            this.cbNewRelic.Location = new System.Drawing.Point(11, 105);
-            this.cbNewRelic.Name = "cbNewRelic";
-            this.cbNewRelic.Size = new System.Drawing.Size(240, 17);
-            this.cbNewRelic.TabIndex = 3;
-            this.cbNewRelic.Text = "¿Lanza alertas en NewRelic? (Próximamente)";
-            this.cbNewRelic.UseVisualStyleBackColor = true;
+            this.txtSlackChannel.Enabled = false;
+            this.txtSlackChannel.Location = new System.Drawing.Point(149, 22);
+            this.txtSlackChannel.Name = "txtSlackChannel";
+            this.txtSlackChannel.Size = new System.Drawing.Size(161, 20);
+            this.txtSlackChannel.TabIndex = 1;
+            // 
+            // gbPersonalizado
+            // 
+            this.gbPersonalizado.BackColor = System.Drawing.Color.Thistle;
+            this.gbPersonalizado.Controls.Add(this.txtNombreComando);
+            this.gbPersonalizado.Controls.Add(this.txtComando);
+            this.gbPersonalizado.Controls.Add(this.label2);
+            this.gbPersonalizado.Controls.Add(this.label21);
+            this.gbPersonalizado.Location = new System.Drawing.Point(12, 532);
+            this.gbPersonalizado.Name = "gbPersonalizado";
+            this.gbPersonalizado.Size = new System.Drawing.Size(652, 56);
+            this.gbPersonalizado.TabIndex = 13;
+            this.gbPersonalizado.TabStop = false;
+            this.gbPersonalizado.Text = "Comando SSH";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(226, 24);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(29, 13);
+            this.label22.TabIndex = 7;
+            this.label22.Text = "URL";
+            // 
+            // txtNombreUrl
+            // 
+            this.txtNombreUrl.Location = new System.Drawing.Point(58, 21);
+            this.txtNombreUrl.Name = "txtNombreUrl";
+            this.txtNombreUrl.Size = new System.Drawing.Size(144, 20);
+            this.txtNombreUrl.TabIndex = 6;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(8, 24);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(44, 13);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Nombre";
+            // 
+            // txtUrl
+            // 
+            this.txtUrl.Location = new System.Drawing.Point(284, 19);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(355, 20);
+            this.txtUrl.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nombre";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(226, 25);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(52, 13);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "Comando";
+            // 
+            // txtComando
+            // 
+            this.txtComando.Location = new System.Drawing.Point(284, 19);
+            this.txtComando.Name = "txtComando";
+            this.txtComando.Size = new System.Drawing.Size(355, 20);
+            this.txtComando.TabIndex = 0;
+            // 
+            // txtNombreComando
+            // 
+            this.txtNombreComando.Location = new System.Drawing.Point(62, 22);
+            this.txtNombreComando.Name = "txtNombreComando";
+            this.txtNombreComando.Size = new System.Drawing.Size(140, 20);
+            this.txtNombreComando.TabIndex = 2;
+            // 
+            // gbUrl
+            // 
+            this.gbUrl.BackColor = System.Drawing.Color.LightSlateGray;
+            this.gbUrl.Controls.Add(this.txtUrl);
+            this.gbUrl.Controls.Add(this.label22);
+            this.gbUrl.Controls.Add(this.label23);
+            this.gbUrl.Controls.Add(this.txtNombreUrl);
+            this.gbUrl.Location = new System.Drawing.Point(12, 470);
+            this.gbUrl.Name = "gbUrl";
+            this.gbUrl.Size = new System.Drawing.Size(652, 56);
+            this.gbUrl.TabIndex = 14;
+            this.gbUrl.TabStop = false;
+            this.gbUrl.Text = "URL Personalizada";
+            // 
+            // cbRdp
+            // 
+            this.cbRdp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRdp.FormattingEnabled = true;
+            this.cbRdp.Location = new System.Drawing.Point(124, 175);
+            this.cbRdp.Name = "cbRdp";
+            this.cbRdp.Size = new System.Drawing.Size(100, 21);
+            this.cbRdp.TabIndex = 17;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(124, 158);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(96, 13);
+            this.label24.TabIndex = 16;
+            this.label24.Text = "Escritorio Remoto?";
+            // 
+            // gbRdp
+            // 
+            this.gbRdp.BackColor = System.Drawing.Color.Linen;
+            this.gbRdp.Controls.Add(this.txtRdpUrl);
+            this.gbRdp.Controls.Add(this.label26);
+            this.gbRdp.Controls.Add(this.txtRdpPass);
+            this.gbRdp.Controls.Add(this.txtRdpUser);
+            this.gbRdp.Controls.Add(this.label25);
+            this.gbRdp.Controls.Add(this.labelusu);
+            this.gbRdp.Location = new System.Drawing.Point(342, 337);
+            this.gbRdp.Name = "gbRdp";
+            this.gbRdp.Size = new System.Drawing.Size(322, 127);
+            this.gbRdp.TabIndex = 15;
+            this.gbRdp.TabStop = false;
+            this.gbRdp.Text = "Credenciales Escritorio Remoto";
+            // 
+            // labelusu
+            // 
+            this.labelusu.AutoSize = true;
+            this.labelusu.Location = new System.Drawing.Point(8, 75);
+            this.labelusu.Name = "labelusu";
+            this.labelusu.Size = new System.Drawing.Size(43, 13);
+            this.labelusu.TabIndex = 0;
+            this.labelusu.Text = "Usuario";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(146, 75);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(61, 13);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Contraseña";
+            // 
+            // txtRdpUser
+            // 
+            this.txtRdpUser.Location = new System.Drawing.Point(11, 91);
+            this.txtRdpUser.Name = "txtRdpUser";
+            this.txtRdpUser.Size = new System.Drawing.Size(121, 20);
+            this.txtRdpUser.TabIndex = 2;
+            // 
+            // txtRdpPass
+            // 
+            this.txtRdpPass.Location = new System.Drawing.Point(149, 91);
+            this.txtRdpPass.Name = "txtRdpPass";
+            this.txtRdpPass.Size = new System.Drawing.Size(160, 20);
+            this.txtRdpPass.TabIndex = 3;
+            // 
+            // txtRdpUrl
+            // 
+            this.txtRdpUrl.Location = new System.Drawing.Point(11, 44);
+            this.txtRdpUrl.Name = "txtRdpUrl";
+            this.txtRdpUrl.Size = new System.Drawing.Size(298, 20);
+            this.txtRdpUrl.TabIndex = 5;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(8, 28);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(29, 13);
+            this.label26.TabIndex = 4;
+            this.label26.Text = "URL";
             // 
             // Sucursal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 479);
+            this.ClientSize = new System.Drawing.Size(674, 600);
+            this.Controls.Add(this.gbRdp);
+            this.Controls.Add(this.gbUrl);
+            this.Controls.Add(this.gbPersonalizado);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbMySql);
+            this.Controls.Add(this.gbSsh);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -568,14 +773,20 @@
             this.Load += new System.EventHandler(this.Sucursal_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbSsh.ResumeLayout(false);
+            this.gbSsh.PerformLayout();
+            this.gbMySql.ResumeLayout(false);
+            this.gbMySql.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.gbPersonalizado.ResumeLayout(false);
+            this.gbPersonalizado.PerformLayout();
+            this.gbUrl.ResumeLayout(false);
+            this.gbUrl.PerformLayout();
+            this.gbRdp.ResumeLayout(false);
+            this.gbRdp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -588,7 +799,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelNSuc;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbSsh;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -596,7 +807,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbMySql;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
@@ -631,7 +842,26 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox cbSlack;
         private System.Windows.Forms.TextBox txtSlackChannel;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbNewRelic;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.GroupBox gbPersonalizado;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtNombreUrl;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.TextBox txtNombreComando;
+        private System.Windows.Forms.TextBox txtComando;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox gbUrl;
+        private System.Windows.Forms.ComboBox cbRdp;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.GroupBox gbRdp;
+        private System.Windows.Forms.TextBox txtRdpUrl;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtRdpPass;
+        private System.Windows.Forms.TextBox txtRdpUser;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label labelusu;
     }
 }

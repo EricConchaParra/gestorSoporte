@@ -427,6 +427,41 @@ namespace GestorSoporte
         }
 
 
+        public static DataTable GetConfig()
+        {
+            string cnString = connectString();
+
+            MySqlConnection cn = new MySqlConnection(cnString);
+
+            MySqlCommand cmd = new MySqlCommand("select * from config;", cn);
+
+            DataSet D = new DataSet();
+
+            try
+            {
+                cn.Open();
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmd);
+                D = new DataSet();
+                DA.Fill(D, "config");
+                cn.Close();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            finally
+            {
+                cn.Close();
+            }
+
+            return D.Tables["config"];
+
+        }
+
+
+
         public static DataTable DatosCasaMatriz(string id_sucursal)
         {
             string cnString = connectString();

@@ -26,6 +26,7 @@ namespace GestorSoporte
 
         private void Carga()
         {
+            
             SucursalesDte();
         }
 
@@ -613,7 +614,7 @@ namespace GestorSoporte
                 }
             }
             catch
-            {};
+            { };
 
             try
             {
@@ -698,10 +699,10 @@ namespace GestorSoporte
             }
             catch
             { };
-            
+
             //Calcula e imprime
             lb33d.Text = ref33 == 0 ? "0" : string.Format("{0:#,##0.##}", (Convert.ToDouble(lb33.Text) / ref33));
-            if((Convert.ToDouble(lb33.Text) / ref33) < 1)
+            if ((Convert.ToDouble(lb33.Text) / ref33) < 1)
             {
                 lb33d.ForeColor = System.Drawing.Color.Red;
                 lb33d.Font = new Font(lb33d.Font, FontStyle.Bold);
@@ -1006,7 +1007,7 @@ namespace GestorSoporte
             }
 
 
-            string proyTitulo = meses == 1 ? "el próximo mes": "próximos " + meses + " meses" ;
+            string proyTitulo = meses == 1 ? "el próximo mes" : "próximos " + meses + " meses";
             lbProyeccion.Text = "Proy. para " + proyTitulo;
             lbProyeccion.Visible = true;
             lb33c.Visible = true;
@@ -1085,16 +1086,16 @@ namespace GestorSoporte
                 {
                     //Si lleva 5 meses (pero menos de 6) vencido
                     if (DateTime.Now.AddMonths(-5) > (Convert.ToDateTime(dgvVencimientos.Rows[fila].Cells[0].Value.ToString())) &&
-                        DateTime.Now.AddMonths(-6) < (Convert.ToDateTime(dgvVencimientos.Rows[fila].Cells[0].Value.ToString()))   )
+                        DateTime.Now.AddMonths(-6) < (Convert.ToDateTime(dgvVencimientos.Rows[fila].Cells[0].Value.ToString())))
                     {
                         //Pregunta... ojo no sea BE o Fac-Exenta p GE, porque estos documentos no vencen
                         if (dgvVencimientos.Rows[fila].Cells[2].Value.ToString() != "39" &&
                             dgvVencimientos.Rows[fila].Cells[2].Value.ToString() != "34" &&
                             dgvVencimientos.Rows[fila].Cells[2].Value.ToString() != "52")
-                            {
-                                //Pone la linea de color amarillo
-                                dgvVencimientos.Rows[fila].DefaultCellStyle.BackColor = Color.Yellow;
-                            }
+                        {
+                            //Pone la linea de color amarillo
+                            dgvVencimientos.Rows[fila].DefaultCellStyle.BackColor = Color.Yellow;
+                        }
                     }
                     //Si lleva 6 o más vencido
                     else if (DateTime.Now.AddMonths(-6) > (Convert.ToDateTime(dgvVencimientos.Rows[fila].Cells[0].Value.ToString())))
@@ -1116,7 +1117,8 @@ namespace GestorSoporte
                     string tipo_doc = dgvVencimientos.Rows[fila].Cells[2].Value.ToString();
                     DateTime noVence = DateTime.MinValue;
 
-                    switch (tipo_doc) { 
+                    switch (tipo_doc)
+                    {
                         case "33":
                             dgvVencimientos.Rows[fila].Cells[2].Value = "Factura Electrónica";
                             break;
@@ -1163,7 +1165,7 @@ namespace GestorSoporte
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ayuda help = new ayuda("Analisis de Folios","caf");
+            ayuda help = new ayuda("Analisis de Folios", "caf");
             help.Show();
         }
 
@@ -1173,4 +1175,3 @@ namespace GestorSoporte
         }
     }
 }
-

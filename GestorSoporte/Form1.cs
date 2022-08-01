@@ -97,16 +97,29 @@ namespace GestorSoporte
 
         private void SeleccionaCliente()
         {
+            string id_cliente = "";
+            string fantasia = "";
+
             //Obtengo el RUT del cliente y su fantasía como variables string
-            string id_cliente = this.dgvClientes.CurrentRow.Cells[0].Value.ToString();
-            string fantasia = this.dgvClientes.CurrentRow.Cells[1].Value.ToString();
+            try
+            {
+                id_cliente = this.dgvClientes.CurrentRow.Cells[0].Value.ToString();
+                fantasia = this.dgvClientes.CurrentRow.Cells[1].Value.ToString();
+            }
+            catch
+            {
+                alerta.error("Error", "No seleccionó ningún cliente");
+                return;
+            }
 
             //Pregunta si tiene 0, 1 o más sucursales
             int nSucursales = MySql.CuentaSucursalesCliente(id_cliente);
 
             if (nSucursales == 0)
             {
-                alerta.error("Error", "No hay Datos de sucursal!");
+                alerta.error("Error", "No hay Datos de sucursal. Agregar ahora");
+                Sucursal suc = new Sucursal("new", id_cliente, "");
+                suc.ShowDialog();
             }
             //Si solo tiene una, carga la CM
             else if (nSucursales == 1)

@@ -127,8 +127,7 @@ namespace GestorSoporte
             {
                 DataRow conData = SelConnection.conData;
 
-                string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                    "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+                string cnString = MySql.connectString();
 
                 MySqlConnection cn = new MySqlConnection(cnString);
 
@@ -178,8 +177,7 @@ namespace GestorSoporte
             {
                 DataRow conData = SelConnection.conData;
 
-                string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                    "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+                string cnString = MySql.connectString();
 
                 MySqlConnection cn = new MySqlConnection(cnString);
 

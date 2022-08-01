@@ -18,7 +18,7 @@ namespace GestorSoporte
         }
 
         public static DataRow row;
-        public static string[] datos_usuario = new string[3];
+        public static string[] datos_usuario = new string[4];
 
         private void SelConnection_Load(object sender, EventArgs e)
         {
@@ -40,6 +40,7 @@ namespace GestorSoporte
             string nombre_usuario = "";
             string nivel_usuario = "";
             string id_sucursal = "";
+            string descrip_usuario = "";
 
 
             
@@ -51,9 +52,11 @@ namespace GestorSoporte
                 nivel_usuario = dr["tipo_usuario"].ToString();
                 nombre_usuario = dr["descripcion"].ToString();
                 id_sucursal = dr["id_sucursal"].ToString();
+                descrip_usuario = dr["descripcion"].ToString();
                 datos_usuario[0] = nivel_usuario;
                 datos_usuario[1] = nombre_usuario;
                 datos_usuario[2] = id_sucursal;
+                datos_usuario[3] = descrip_usuario;
 
 
                 //Si es tipo dos, solo debe tener acceso directo al cPanel de la sucursal asignada

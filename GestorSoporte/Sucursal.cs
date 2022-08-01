@@ -85,39 +85,24 @@ namespace GestorSoporte
             cbMysql.ValueMember = "cod";
             cbMysql.DataSource = dtMysql;
 
+            //Escritorio Remoto
+            DataTable dtRdp = new DataTable();
+            dtRdp.Columns.Add("cod");
+            dtRdp.Columns.Add("estado");
 
-            //GestorDTE
-            DataTable dtGestorDte = new DataTable();
-            dtGestorDte.Columns.Add("cod");
-            dtGestorDte.Columns.Add("estado");
+            DataRow rowRdp = dtRdp.NewRow();
+            rowRdp["cod"] = "1";
+            rowRdp["estado"] = "Activo";
+            dtRdp.Rows.Add(rowRdp);
 
-            DataRow rowGestorDte = dtGestorDte.NewRow();
-            rowGestorDte["cod"] = "1";
-            rowGestorDte["estado"] = "Activo";
-            dtGestorDte.Rows.Add(rowGestorDte);
+            DataRow rowRdp1 = dtRdp.NewRow();
+            rowRdp1["cod"] = "0";
+            rowRdp1["estado"] = "Inactivo";
+            dtRdp.Rows.Add(rowRdp1);
 
-            DataRow rowGestorDte1 = dtGestorDte.NewRow();
-            rowGestorDte1["cod"] = "0";
-            rowGestorDte1["estado"] = "Inactivo";
-            dtGestorDte.Rows.Add(rowGestorDte1);
-
-            //Ticket de Soporte
-            DataTable dtTicket = new DataTable();
-            dtTicket.Columns.Add("cod");
-            dtTicket.Columns.Add("estado");
-
-            DataRow rowTicket = dtTicket.NewRow();
-            rowTicket["cod"] = "1";
-            rowTicket["estado"] = "Activo";
-            dtTicket.Rows.Add(rowTicket);
-
-            DataRow rowTicket1 = dtTicket.NewRow();
-            rowTicket1["cod"] = "0";
-            rowTicket1["estado"] = "Inactivo";
-            dtTicket.Rows.Add(rowTicket1);
-
-
-
+            cbRdp.DisplayMember = "estado";
+            cbRdp.ValueMember = "cod";
+            cbRdp.DataSource = dtRdp;
 
             if (accion == "new")
             {
@@ -176,14 +161,38 @@ namespace GestorSoporte
             txtIP.Text = sucursal["ip"].ToString();
             //SSH
             cbSsh.SelectedValue = sucursal["ssh"].ToString();
+            if (sucursal["ssh"].ToString() == "1")
+            {
+                gbSsh.Enabled = true;
+                gbPersonalizado.Enabled = true;
+            }
+            else
+            {
+                gbSsh.Enabled = false;
+                gbPersonalizado.Enabled = false;
+            }
+
             cbSshRoot.SelectedValue = sucursal["root_access"].ToString();
             txtRootUser.Text = sucursal["root_user"].ToString();
             txtRootPass.Text = sucursal["root_pass"].ToString();
             txtRegularUser.Text = sucursal["regular_user"].ToString();
             txtRegularPass.Text = sucursal["regular_pass"].ToString();
             txtPuertoSsh.Text = sucursal["puerto_ssh"].ToString();
+            txtNombreComando.Text = sucursal["nombreComando"].ToString();
+            txtComando.Text = sucursal["comando"].ToString();
+            txtNombreUrl.Text = sucursal["nombreUrl"].ToString();
+            txtUrl.Text = sucursal["url"].ToString();
+
             //MySQL
             cbMysql.SelectedValue = sucursal["mysql"].ToString();
+            if (sucursal["mysql"].ToString() == "1")
+            {
+                gbMySql.Enabled = true;
+            }
+            else
+            {
+                gbMySql.Enabled = false;
+            }
             txtPuertoMysql.Text = sucursal["puerto_mysql"].ToString();
             txtMysqlRootUser.Text = sucursal["root_user_mysql"].ToString();
             txtMysqlRootPass.Text = sucursal["root_pass_mysql"].ToString();
@@ -191,6 +200,24 @@ namespace GestorSoporte
             txtMysqlAccesoPass.Text = sucursal["acceso_pass_mysql"].ToString();
             txtDteDb.Text = sucursal["dte_db_mysql"].ToString();
             txtErpDb.Text = sucursal["erp_db_mysql"].ToString();
+
+            //RDP
+            cbRdp.SelectedValue = sucursal["rdp"].ToString();
+            if (sucursal["rdp"].ToString() == "1")
+            {
+                gbRdp.Enabled = true;
+            }
+            else
+            {
+                gbRdp.Enabled = false;
+            }
+            txtRdpUrl.Text = sucursal["rdpUrl"].ToString();
+            txtRdpUser.Text = sucursal["rdpUser"].ToString();
+            txtRdpPass.Text = sucursal["rdpPass"].ToString();
+
+            //Slack
+            cbSlack.Checked = sucursal["slack"].ToString() == "1" ? true : false;
+            txtSlackChannel.Text = sucursal["slackChannel"].ToString();
         }
 
 
@@ -234,9 +261,23 @@ namespace GestorSoporte
             string acceso_pass_mysql = Seguridad.Encriptar(txtMysqlAccesoPass.Text);
             string dte_db_mysql = txtDteDb.Text;
             string erp_db_mysql = txtErpDb.Text;
+            string nombreComando = txtNombreComando.Text;
+            string comando = txtComando.Text;
+
+            //RDP
+            string rdp = cbRdp.SelectedValue.ToString();
+            string rdpUrl = Seguridad.Encriptar(txtRdpUrl.Text);
+            string rdpUser = Seguridad.Encriptar(txtRdpUser.Text);
+            string rdpPass = Seguridad.Encriptar(txtRdpPass.Text);
+
+            string nombreUrl = txtNombreUrl.Text;
+            string Url = txtUrl.Text;
+
+            //Slack
+            string slack = cbSlack.Checked == true ? "1" : "0";
+            string slackChannel = txtSlackChannel.Text;
 
             //Graba los datos en MySQL
-
             
             MySqlConnection cn = new MySqlConnection(MySql.connectString());
 
@@ -264,10 +305,20 @@ namespace GestorSoporte
                     " acceso_user_mysql," +
                     " acceso_pass_mysql," +
                     " dte_db_mysql," +
-                    " erp_db_mysql)" +
+                    " erp_db_mysql," +
+                    " nombreComando," +
+                    " comando," +
+                    " nombreUrl," +
+                    " url," +
+                    " rdp," +
+                    " rdpUrl," +
+                    " rdpUser," +
+                    " rdpPass," +
+                    " slack," +
+                    " slackChannel)" +
                     " VALUES" +
                     " ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}'," +
-                    " '{17}','{18}');", 
+                    " '{17}','{18}','{19}','{20}','{21}','{22}','{23}','{24}', '{25}', '{26}', '{27}');", 
                     rut_cliente,
                     sucursal_correl,
                     sucursal_nombre,
@@ -286,7 +337,17 @@ namespace GestorSoporte
                     acceso_user_mysql,
                     acceso_pass_mysql,
                     dte_db_mysql,
-                    erp_db_mysql);
+                    erp_db_mysql,
+                    nombreComando,
+                    comando,
+                    nombreUrl,
+                    Url,
+                    rdp,
+                    rdpUrl,
+                    rdpUser,
+                    rdpPass,
+                    slack,
+                    slackChannel);
 
 
             }
@@ -309,8 +370,18 @@ namespace GestorSoporte
                     " acceso_user_mysql = '{13}'," +
                     " acceso_pass_mysql = '{14}'," +
                     " dte_db_mysql = '{15}'," +
-                    " erp_db_mysql = '{16}'" +
-                    " where id = '{29}';",
+                    " erp_db_mysql = '{16}'," +
+                    " nombreComando = '{17}'," +
+                    " comando = '{18}'," +
+                    " nombreUrl = '{19}'," +
+                    " Url = '{20}'," +
+                    " rdp = '{21}'," +
+                    " rdpUrl = '{22}'," +
+                    " rdpUser = '{23}'," +
+                    " rdpPass = '{24}'," +
+                    " slack = '{25}'," +
+                    " slackChannel = '{26}' " +
+                    " where id = '{27}';",
                     sucursal_nombre,
                     ip,
                     ssh,
@@ -327,7 +398,18 @@ namespace GestorSoporte
                     acceso_user_mysql,
                     acceso_pass_mysql,
                     dte_db_mysql,
-                    erp_db_mysql);
+                    erp_db_mysql,
+                    nombreComando,
+                    comando,
+                    nombreUrl,
+                    Url,
+                    rdp,
+                    rdpUrl,
+                    rdpUser,
+                    rdpPass,
+                    slack,
+                    slackChannel,
+                    id_sucursal);
              
             }
 
@@ -358,6 +440,44 @@ namespace GestorSoporte
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbSsh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSsh.SelectedValue.ToString() == "0")
+            {
+                gbSsh.Enabled = false;
+            }
+            else
+            {
+                gbSsh.Enabled = true;
+            }
+        }
+
+        private void cbMysql_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbMysql.SelectedValue.ToString() == "0")
+            {
+                gbMySql.Enabled = false;
+            }
+            else
+            {
+                gbMySql.Enabled = true;
+            }
+
+        }
+
+        private void cbSlack_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSlack.Checked)
+            {
+                txtSlackChannel.Enabled = true;
+            }
+
+            else
+            {
+                txtSlackChannel.Enabled = false;
+            }
         }
     }
     }

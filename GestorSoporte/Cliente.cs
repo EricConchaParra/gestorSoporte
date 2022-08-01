@@ -123,13 +123,9 @@ namespace GestorSoporte
             txtRut.Text = cliData["rut"].ToString();
             txtRazonSocial.Text = cliData["razon_social"].ToString();
             txtFantasia.Text = cliData["fantasia"].ToString();
-            txtComercial.Text = cliData["c_comercial"].ToString();
-            txtTecnico.Text = cliData["c_tecnico"].ToString();
-            txtAdministrador.Text = cliData["c_adm_sistema"].ToString();
-            txtNotas.Text = Seguridad.DesEncriptar(cliData["notas"].ToString());
+            txtNotas.Text = cliData["c_comercial"].ToString();
             cbFuncionario.SelectedValue = cliData["funcionario"].ToString();
             cbASSM.SelectedValue = cliData["assm"].ToString();
-            txtGDrive.Text = cliData["gdrive"].ToString();
 
             if (cliData["erp"].ToString() == "1")
             {
@@ -151,14 +147,6 @@ namespace GestorSoporte
 
             }
             txtUserSII.Text = cliData["cert_autorizado"].ToString();
-            if (cliData["hosting"].ToString() == "1")
-            {
-                ckHosting.Checked = true;
-                //hosting_fecha_vence
-                DateTime hosting_vence = DateTime.Parse(cliData["hosting_fecha_vence"].ToString());
-                dateHosting.Value = hosting_vence;
-
-            }
             cbActivo.SelectedValue = cliData["activo"].ToString();
             checkCampos();
 
@@ -188,15 +176,6 @@ namespace GestorSoporte
                 txtUserSII.Enabled = false;
                 dateCertificado.Visible = false;
             }
-
-            if (ckHosting.Checked == true)
-            {
-                dateHosting.Visible = true;
-            }
-            else
-            {
-                dateHosting.Visible = false;
-            }
         }
 
 
@@ -212,55 +191,41 @@ namespace GestorSoporte
             string rut = txtRut.Text;
             string razon_social = txtRazonSocial.Text;
             string fantasia = txtFantasia.Text;
-            string c_comercial = txtComercial.Text;
-            string c_tecnico = txtTecnico.Text;
-            string c_adm_sistema = txtAdministrador.Text;
-            string notas = Seguridad.Encriptar(txtNotas.Text);
+            string notas = txtNotas.Text;
             string funcionario = cbFuncionario.SelectedValue.ToString();
             string assm = cbASSM.SelectedValue.ToString();
-            string gdrive = txtGDrive.Text;
             string erp = ckErp.Checked == true ? "1" : "0";
             string erp_fecha_actual = dateErp.Value.ToString("yyyy-MM-dd");
             string dte = ckDte.Checked == true ? "1" : "0";
             string cert_autorizado = txtUserSII.Text;
             string cert_vencimiento = dateCertificado.Value.ToString("yyyy-MM-dd");
             string dte_fecha_actual = dateDte.Value.ToString("yyyy-MM-dd");
-            string hosting = ckHosting.Checked == true ? "1" : "0";
-            string hosting_fecha_vence = dateHosting.Value.ToString("yyyy-MM-dd");
             string activo = cbActivo.SelectedValue.ToString();
 
             //Graba los datos en MySQL
 
             //trae los datos de conexion, dependiendo de donde sea
-            DataRow conData = SelConnection.conData;
 
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = MySql.connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
             string sCmd = string.Format("insert into clientes" +
-                " (rut, razon_social, fantasia, c_comercial, c_tecnico, c_adm_sistema, notas, funcionario, assm, gdrive, " +
-                "erp, erp_fecha_actual, dte, cert_autorizado, cert_vencimiento, dte_fecha_actual, hosting, hosting_fecha_vence, activo) " +
-                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}');",
+                " (rut, razon_social, fantasia, notas, funcionario, assm, " +
+                "erp, erp_fecha_actual, dte, cert_autorizado, cert_vencimiento, dte_fecha_actual, activo) " +
+                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');",
                 rut,
                 razon_social,
                 fantasia,
-                c_comercial,
-                c_tecnico,
-                c_adm_sistema,
                 notas,
                 funcionario,
                 assm,
-                gdrive,
                 erp,
                 erp_fecha_actual,
                 dte,
                 cert_autorizado,
                 cert_vencimiento,
                 dte_fecha_actual,
-                hosting,
-                hosting_fecha_vence,
                 activo);
 
             //alerta.error("", sCmd);
@@ -295,21 +260,15 @@ namespace GestorSoporte
             string rut = txtRut.Text;
             string razon_social = txtRazonSocial.Text;
             string fantasia = txtFantasia.Text;
-            string c_comercial = txtComercial.Text;
-            string c_tecnico = txtTecnico.Text;
-            string c_adm_sistema = txtAdministrador.Text;
-            string notas = Seguridad.Encriptar(txtNotas.Text);
+            string notas = txtNotas.Text;
             string funcionario = cbFuncionario.SelectedValue.ToString();
             string assm = cbASSM.SelectedValue.ToString();
-            string gdrive = txtGDrive.Text;
             string erp = ckErp.Checked == true ? "1" : "0";
             string erp_fecha_actual = dateErp.Value.ToString("yyyy-MM-dd");
             string dte = ckDte.Checked == true ? "1" : "0";
             string cert_autorizado = txtUserSII.Text;
             string cert_vencimiento = dateCertificado.Value.ToString("yyyy-MM-dd");
             string dte_fecha_actual = dateDte.Value.ToString("yyyy-MM-dd");
-            string hosting = ckHosting.Checked == true ? "1" : "0";
-            string hosting_fecha_vence = dateHosting.Value.ToString("yyyy-MM-dd");
             string activo = cbActivo.SelectedValue.ToString();
 
             //Graba los datos en MySQL
@@ -317,34 +276,27 @@ namespace GestorSoporte
             //trae los datos de conexion, dependiendo de donde sea
             DataRow conData = SelConnection.conData;
 
-            string cnString = "SERVER=" + conData["ip"] + ";" + "PORT=" + conData["puerto"] + ";" +
-                                "DATABASE= s_manager" + ";" + "UID=" + conData["user"] + ";" + "PASSWORD=" + conData["pass"] + ";";
+            string cnString = MySql.connectString();
 
             MySqlConnection cn = new MySqlConnection(cnString);
 
             string sCmd = string.Format("update clientes" +
-                " set razon_social = '{1}', fantasia = '{2}', c_comercial = '{3}', c_tecnico = '{4}', c_adm_sistema = '{5}', notas = '{6}', funcionario = '{7}', " +
-                " assm = '{8}', gdrive = '{9}', erp = '{10}', erp_fecha_actual = '{11}', dte = '{12}', cert_autorizado = '{13}'," +
-                " cert_vencimiento = '{14}', dte_fecha_actual = '{15}', hosting = '{16}', hosting_fecha_vence = '{17}', activo = '{18}' " +
+                " set razon_social = '{1}', fantasia = '{2}', notas = '{3}', funcionario = '{4}', " +
+                " assm = '{5}', erp = '{6}', erp_fecha_actual = '{7}', dte = '{8}', cert_autorizado = '{9}'," +
+                " cert_vencimiento = '{10}', dte_fecha_actual = '{11}', activo = '{12}' " +
                 " where rut = '{0}'",
                 rut,
                 razon_social,
                 fantasia,
-                c_comercial,
-                c_tecnico,
-                c_adm_sistema,
                 notas,
                 funcionario,
                 assm,
-                gdrive,
                 erp,
                 erp_fecha_actual,
                 dte,
                 cert_autorizado,
                 cert_vencimiento,
                 dte_fecha_actual,
-                hosting,
-                hosting_fecha_vence,
                 activo);
 
             //alerta.informacion("", sCmd);
@@ -399,18 +351,6 @@ namespace GestorSoporte
                 dateDte.Visible = false;
                 txtUserSII.Enabled = false;
                 dateCertificado.Visible = false;
-            }
-        }
-
-        private void ckHosting_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ckHosting.Checked == true)
-            {
-                dateHosting.Visible = true;
-            }
-            else
-            {
-                dateHosting.Visible = false;
             }
         }
     }
