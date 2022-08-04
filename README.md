@@ -1,6 +1,9 @@
 ## Soporte Manager
 *Aplicación de escritorio para manejo de eventos de soporte que requieren cronometrar la atención, y realizar conexiones via SSH, transferencia de archivos via SCP y conexiónes de Escritorio Remoto (RDP)*
 
+![image](https://user-images.githubusercontent.com/85537653/182906095-efea6712-e8c0-4ed5-a265-eb53ca6a9f4f.png)
+
+
 ## Nota del autor
 Se hace dificil manejar muchas conexiones y claves al dar soporte a usuarios con servidores Linux/Windows. Sobre todo si son clientes con multiples sucursales.
 Es por ello que creé esta aplicación para poder contener la información en una sola fuente y que ésta fuente llame a todos los recursos que sean necesarios.
