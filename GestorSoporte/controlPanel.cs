@@ -43,8 +43,13 @@ namespace GestorSoporte
         private void controlPanel_Load(object sender, EventArgs e)
         {
             //Quité aca la X de cerrar el diálogo. Asi no puede salir sin verificar el aviso de soporte.
-            this.ControlBox = false;
+            //this.ControlBox = false;
             Carga();
+
+            //Inicio el contador automáticamente al abrir cPanel
+            btnCronometro.Text = "Pausar";
+            stopWatch.Start();
+            timer1.Enabled = true;
         }
 
         private void Carga()
@@ -521,11 +526,11 @@ namespace GestorSoporte
             var slackClient = new SlackClient(Seguridad.DesEncriptar(MySql.GetConfig().Rows[0]["slack"].ToString()));
 
             //Obtengo el tiempo que marca el contador
-            string tiempo = "";
+            int tiempo = 0;
             TimeSpan ts = new TimeSpan(0, 0, 0, 0, (int)stopWatch.ElapsedMilliseconds);
             if ((int)stopWatch.ElapsedMilliseconds > 0)
             {
-                tiempo = ts.ToString("mm\\:ss");
+                tiempo = Convert.ToInt32(ts.TotalMinutes);
             }
 
 
@@ -537,7 +542,7 @@ namespace GestorSoporte
                        "Evento " + tipoEvento + "\n" +   
                        "*Cliente:* " + nombreCliente + " - " + sucData["sucursal_nombre"] + "\n" +
                        "*Atendido por:* " + datos_usuario[3] + "\n" +
-                       (tiempo != "" ? "*Tiempo (min:seg):* " + tiempo + "\n": "") +
+                       (tiempo > 0 ? "*Tiempo (minutos):* " + tiempo.ToString() + "\n": "") +
                        "*Cobrar:* " + (cobrar ? "Si" : "No") + "\n" + 
                        "\n" +
                        "*" + descripcion + "* \n"
@@ -555,10 +560,13 @@ namespace GestorSoporte
 
             if (slack && !fin)
             {
+                this.UseWaitCursor = true;
                 sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin);
+                this.UseWaitCursor = false;
             }
             if (fin)
             {
+                this.UseWaitCursor = true;
                 clieData = MySql.DatosCliente(sucData["fk_cliente"].ToString());
                 string fantasiaCliente = clieData.Rows[0]["fantasia"].ToString();
 
@@ -572,13 +580,18 @@ namespace GestorSoporte
                 TimeSpan ts = new TimeSpan(0, 0, 0, 0, (int)stopWatch.ElapsedMilliseconds);
                 if ((int)stopWatch.ElapsedMilliseconds > 0)
                 {
-                    tiempo = Int32.Parse(ts.ToString("mm"));
+                    tiempo = Convert.ToInt32(ts.TotalMinutes);
                 }
 
                 string cobranza = cobrar ? "Si" : "No";
 
                 sendNotion.grabaSoporte(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, funcionario, tiempo, fecha, cobranza);
-                sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin);
+
+                if (slack)
+                {
+                    sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin);
+                }
+
 
                 //Deten el temporizador y vacia los textos
                 stopWatch.Stop();
@@ -586,6 +599,11 @@ namespace GestorSoporte
 
                 txtDescripcionEvento.Text = "";
                 txtNotaSoporte.Text = "";
+
+                this.UseWaitCursor = false;
+                
+                //Cierra la ventana
+                this.Close();
             }
         }
 

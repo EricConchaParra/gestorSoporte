@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sucursal));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbRdp = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.cbMysql = new System.Windows.Forms.ComboBox();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.txtSucNombre = new System.Windows.Forms.TextBox();
@@ -80,24 +82,22 @@
             this.cbSlack = new System.Windows.Forms.CheckBox();
             this.txtSlackChannel = new System.Windows.Forms.TextBox();
             this.gbPersonalizado = new System.Windows.Forms.GroupBox();
+            this.txtNombreComando = new System.Windows.Forms.TextBox();
+            this.txtComando = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.txtNombreUrl = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtUrl = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txtComando = new System.Windows.Forms.TextBox();
-            this.txtNombreComando = new System.Windows.Forms.TextBox();
             this.gbUrl = new System.Windows.Forms.GroupBox();
-            this.cbRdp = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.gbRdp = new System.Windows.Forms.GroupBox();
-            this.labelusu = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtRdpUser = new System.Windows.Forms.TextBox();
-            this.txtRdpPass = new System.Windows.Forms.TextBox();
             this.txtRdpUrl = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
+            this.txtRdpPass = new System.Windows.Forms.TextBox();
+            this.txtRdpUser = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.labelusu = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.gbSsh.SuspendLayout();
             this.gbMySql.SuspendLayout();
@@ -131,6 +131,24 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Identificación";
+            // 
+            // cbRdp
+            // 
+            this.cbRdp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRdp.FormattingEnabled = true;
+            this.cbRdp.Location = new System.Drawing.Point(124, 175);
+            this.cbRdp.Name = "cbRdp";
+            this.cbRdp.Size = new System.Drawing.Size(100, 21);
+            this.cbRdp.TabIndex = 17;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(124, 158);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(96, 13);
+            this.label24.TabIndex = 16;
+            this.label24.Text = "Escritorio Remoto?";
             // 
             // cbMysql
             // 
@@ -591,6 +609,38 @@
             this.gbPersonalizado.TabStop = false;
             this.gbPersonalizado.Text = "Comando SSH";
             // 
+            // txtNombreComando
+            // 
+            this.txtNombreComando.Location = new System.Drawing.Point(62, 22);
+            this.txtNombreComando.Name = "txtNombreComando";
+            this.txtNombreComando.Size = new System.Drawing.Size(140, 20);
+            this.txtNombreComando.TabIndex = 2;
+            // 
+            // txtComando
+            // 
+            this.txtComando.Location = new System.Drawing.Point(284, 19);
+            this.txtComando.Name = "txtComando";
+            this.txtComando.Size = new System.Drawing.Size(355, 20);
+            this.txtComando.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Nombre";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(226, 25);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(52, 13);
+            this.label21.TabIndex = 3;
+            this.label21.Text = "Comando";
+            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -623,38 +673,6 @@
             this.txtUrl.Size = new System.Drawing.Size(355, 20);
             this.txtUrl.TabIndex = 4;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(226, 25);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(52, 13);
-            this.label21.TabIndex = 3;
-            this.label21.Text = "Comando";
-            // 
-            // txtComando
-            // 
-            this.txtComando.Location = new System.Drawing.Point(284, 19);
-            this.txtComando.Name = "txtComando";
-            this.txtComando.Size = new System.Drawing.Size(355, 20);
-            this.txtComando.TabIndex = 0;
-            // 
-            // txtNombreComando
-            // 
-            this.txtNombreComando.Location = new System.Drawing.Point(62, 22);
-            this.txtNombreComando.Name = "txtNombreComando";
-            this.txtNombreComando.Size = new System.Drawing.Size(140, 20);
-            this.txtNombreComando.TabIndex = 2;
-            // 
             // gbUrl
             // 
             this.gbUrl.BackColor = System.Drawing.Color.LightSlateGray;
@@ -668,24 +686,6 @@
             this.gbUrl.TabIndex = 14;
             this.gbUrl.TabStop = false;
             this.gbUrl.Text = "URL Personalizada";
-            // 
-            // cbRdp
-            // 
-            this.cbRdp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRdp.FormattingEnabled = true;
-            this.cbRdp.Location = new System.Drawing.Point(124, 175);
-            this.cbRdp.Name = "cbRdp";
-            this.cbRdp.Size = new System.Drawing.Size(100, 21);
-            this.cbRdp.TabIndex = 17;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(124, 158);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(96, 13);
-            this.label24.TabIndex = 16;
-            this.label24.Text = "Escritorio Remoto?";
             // 
             // gbRdp
             // 
@@ -703,38 +703,6 @@
             this.gbRdp.TabStop = false;
             this.gbRdp.Text = "Credenciales Escritorio Remoto";
             // 
-            // labelusu
-            // 
-            this.labelusu.AutoSize = true;
-            this.labelusu.Location = new System.Drawing.Point(8, 75);
-            this.labelusu.Name = "labelusu";
-            this.labelusu.Size = new System.Drawing.Size(43, 13);
-            this.labelusu.TabIndex = 0;
-            this.labelusu.Text = "Usuario";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(146, 75);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(61, 13);
-            this.label25.TabIndex = 1;
-            this.label25.Text = "Contraseña";
-            // 
-            // txtRdpUser
-            // 
-            this.txtRdpUser.Location = new System.Drawing.Point(11, 91);
-            this.txtRdpUser.Name = "txtRdpUser";
-            this.txtRdpUser.Size = new System.Drawing.Size(121, 20);
-            this.txtRdpUser.TabIndex = 2;
-            // 
-            // txtRdpPass
-            // 
-            this.txtRdpPass.Location = new System.Drawing.Point(149, 91);
-            this.txtRdpPass.Name = "txtRdpPass";
-            this.txtRdpPass.Size = new System.Drawing.Size(160, 20);
-            this.txtRdpPass.TabIndex = 3;
-            // 
             // txtRdpUrl
             // 
             this.txtRdpUrl.Location = new System.Drawing.Point(11, 44);
@@ -750,6 +718,38 @@
             this.label26.Size = new System.Drawing.Size(29, 13);
             this.label26.TabIndex = 4;
             this.label26.Text = "URL";
+            // 
+            // txtRdpPass
+            // 
+            this.txtRdpPass.Location = new System.Drawing.Point(149, 91);
+            this.txtRdpPass.Name = "txtRdpPass";
+            this.txtRdpPass.Size = new System.Drawing.Size(160, 20);
+            this.txtRdpPass.TabIndex = 3;
+            // 
+            // txtRdpUser
+            // 
+            this.txtRdpUser.Location = new System.Drawing.Point(11, 91);
+            this.txtRdpUser.Name = "txtRdpUser";
+            this.txtRdpUser.Size = new System.Drawing.Size(121, 20);
+            this.txtRdpUser.TabIndex = 2;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(146, 75);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(61, 13);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Contraseña";
+            // 
+            // labelusu
+            // 
+            this.labelusu.AutoSize = true;
+            this.labelusu.Location = new System.Drawing.Point(8, 75);
+            this.labelusu.Name = "labelusu";
+            this.labelusu.Size = new System.Drawing.Size(43, 13);
+            this.labelusu.TabIndex = 0;
+            this.labelusu.Text = "Usuario";
             // 
             // Sucursal
             // 

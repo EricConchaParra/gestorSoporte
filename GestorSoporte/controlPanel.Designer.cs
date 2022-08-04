@@ -48,12 +48,12 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnGrabaNota = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.cbSlack = new System.Windows.Forms.CheckBox();
             this.cbFinEvento = new System.Windows.Forms.CheckBox();
             this.cbCobrar = new System.Windows.Forms.CheckBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.txtNotaSoporte = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
@@ -81,8 +81,8 @@
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -230,7 +230,7 @@
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
             this.txtNotas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtNotas.Size = new System.Drawing.Size(768, 162);
+            this.txtNotas.Size = new System.Drawing.Size(768, 93);
             this.txtNotas.TabIndex = 7;
             this.txtNotas.TabStop = false;
             this.txtNotas.Click += new System.EventHandler(this.txtNotasCliente_Click);
@@ -240,9 +240,9 @@
             this.groupBox4.Controls.Add(this.btnGrabaNota);
             this.groupBox4.Controls.Add(this.txtNotas);
             this.groupBox4.ForeColor = System.Drawing.Color.Navy;
-            this.groupBox4.Location = new System.Drawing.Point(12, 352);
+            this.groupBox4.Location = new System.Drawing.Point(12, 413);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(780, 210);
+            this.groupBox4.Size = new System.Drawing.Size(780, 149);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Notas";
@@ -260,27 +260,16 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.groupBox10);
             this.groupBox5.Controls.Add(this.groupBox8);
             this.groupBox5.Controls.Add(this.groupBox6);
             this.groupBox5.ForeColor = System.Drawing.Color.Navy;
             this.groupBox5.Location = new System.Drawing.Point(152, 110);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(640, 236);
+            this.groupBox5.Size = new System.Drawing.Size(640, 297);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Eventos de soporte";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.groupBox10);
-            this.groupBox8.Controls.Add(this.groupBox11);
-            this.groupBox8.Controls.Add(this.groupBox9);
-            this.groupBox8.Location = new System.Drawing.Point(165, 20);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(462, 203);
-            this.groupBox8.TabIndex = 3;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Registro Soporte";
             // 
             // groupBox10
             // 
@@ -288,9 +277,9 @@
             this.groupBox10.Controls.Add(this.cbFinEvento);
             this.groupBox10.Controls.Add(this.cbCobrar);
             this.groupBox10.Controls.Add(this.btnSend);
-            this.groupBox10.Location = new System.Drawing.Point(305, 19);
+            this.groupBox10.Location = new System.Drawing.Point(12, 148);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(151, 170);
+            this.groupBox10.Size = new System.Drawing.Size(147, 125);
             this.groupBox10.TabIndex = 8;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Acciones";
@@ -343,12 +332,23 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.groupBox11);
+            this.groupBox8.Controls.Add(this.groupBox9);
+            this.groupBox8.Location = new System.Drawing.Point(165, 20);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(462, 253);
+            this.groupBox8.TabIndex = 3;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Registro Soporte";
+            // 
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.txtNotaSoporte);
             this.groupBox11.Location = new System.Drawing.Point(7, 74);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(292, 115);
+            this.groupBox11.Size = new System.Drawing.Size(449, 173);
             this.groupBox11.TabIndex = 5;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Notas";
@@ -358,7 +358,8 @@
             this.txtNotaSoporte.Location = new System.Drawing.Point(6, 19);
             this.txtNotaSoporte.Multiline = true;
             this.txtNotaSoporte.Name = "txtNotaSoporte";
-            this.txtNotaSoporte.Size = new System.Drawing.Size(275, 88);
+            this.txtNotaSoporte.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtNotaSoporte.Size = new System.Drawing.Size(437, 148);
             this.txtNotaSoporte.TabIndex = 0;
             // 
             // groupBox9
@@ -366,7 +367,7 @@
             this.groupBox9.Controls.Add(this.txtDescripcionEvento);
             this.groupBox9.Location = new System.Drawing.Point(7, 19);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(292, 46);
+            this.groupBox9.Size = new System.Drawing.Size(449, 46);
             this.groupBox9.TabIndex = 4;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Descripción del Evento";
@@ -375,7 +376,7 @@
             // 
             this.txtDescripcionEvento.Location = new System.Drawing.Point(6, 18);
             this.txtDescripcionEvento.Name = "txtDescripcionEvento";
-            this.txtDescripcionEvento.Size = new System.Drawing.Size(275, 20);
+            this.txtDescripcionEvento.Size = new System.Drawing.Size(437, 20);
             this.txtDescripcionEvento.TabIndex = 0;
             // 
             // groupBox6
@@ -384,7 +385,7 @@
             this.groupBox6.Controls.Add(this.btnCronometro);
             this.groupBox6.Location = new System.Drawing.Point(12, 20);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(147, 203);
+            this.groupBox6.Size = new System.Drawing.Size(147, 122);
             this.groupBox6.TabIndex = 2;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Tiempo";
@@ -590,7 +591,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(804, 574);
-            this.ControlBox = false;
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox7);
@@ -611,9 +611,9 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox9.ResumeLayout(false);
