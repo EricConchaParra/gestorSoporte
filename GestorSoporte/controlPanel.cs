@@ -38,6 +38,7 @@ namespace GestorSoporte
         public DataTable clieData = new DataTable();
         public string[] datos_usuario;
         public string report = "";
+        public string horaInicio = "";
 
 
         private void controlPanel_Load(object sender, EventArgs e)
@@ -50,6 +51,9 @@ namespace GestorSoporte
             btnCronometro.Text = "Pausar";
             stopWatch.Start();
             timer1.Enabled = true;
+
+            //Capturo la hora de inicio
+            horaInicio = DateTime.Now.ToString("HH:mm");
         }
 
         private void Carga()
@@ -542,6 +546,7 @@ namespace GestorSoporte
                        "Evento " + tipoEvento + "\n" +   
                        "*Cliente:* " + nombreCliente + " - " + sucData["sucursal_nombre"] + "\n" +
                        "*Atendido por:* " + datos_usuario[3] + "\n" +
+                       "*Hora inicio:* " + horaInicio + "\n" +
                        (tiempo > 0 ? "*Tiempo (minutos):* " + tiempo.ToString() + "\n": "") +
                        "*Cobrar:* " + (cobrar ? "Si" : "No") + "\n" + 
                        "\n" +
