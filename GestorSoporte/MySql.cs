@@ -803,6 +803,63 @@ namespace GestorSoporte
 
         }
 
+        public static DataSet SelectDataSet(string query)
+        {
+            string cnString = connectString();
+
+            MySqlConnection cn = new MySqlConnection(cnString);
+
+            MySqlCommand cmd = new MySqlCommand((query), cn);
+
+            DataSet D = new DataSet();
+
+            try
+            {
+                cn.Open();
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmd);
+                D = new DataSet();
+                DA.Fill(D, "Select");
+                cn.Close();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            finally
+            {
+                cn.Close();
+            }
+
+            return D;
+        }
+
+        public static void SaveDataSet(DataSet ds, string selectQuery)
+        {
+            string cnString = connectString();
+            MySqlConnection cn = new MySqlConnection(cnString);
+            try
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter();
+
+                da.SelectCommand = new MySqlCommand(selectQuery, cn);
+                MySqlCommandBuilder cb = new MySqlCommandBuilder(da);
+                cn.Open();
+
+                da.Fill(ds, "select");
+                da.Update(ds, "select");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+            }
+        }
+
 
     }
 

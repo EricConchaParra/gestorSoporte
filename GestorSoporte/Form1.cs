@@ -224,7 +224,8 @@ namespace GestorSoporte
 
         private void funcionariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            alerta.informacion("", "Pendiente!, por ahora es necesario editar la base de datos directamente.");
+            Funcionarios func = new Funcionarios();
+            func.ShowDialog();
         }
 
         private void consultasSQLToolStripMenuItem_Click(object sender, EventArgs e)
