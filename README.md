@@ -41,6 +41,9 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 - Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado ([ver código en GitHub](https://github.com/EricConchaParra/encrypt))
 
 ## Versiones
+### 2.2.0 (08-08-2022)
+- Puedes editar la lista de equipo de soporte
+
 ### 2.1.0 (04-08-2022)
 - El contador de tiempo de soporte comienza automáticamente cuando al cliente.
 - Si finalizas un evento se cierra la ventana (no hay que hacerlo manualmente)
