@@ -876,7 +876,9 @@
             this.dgvVencimientos.Location = new System.Drawing.Point(3, 95);
             this.dgvVencimientos.Name = "dgvVencimientos";
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkOrange;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkOrange
+                
+                ;
             this.dgvVencimientos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVencimientos.Size = new System.Drawing.Size(864, 427);
             this.dgvVencimientos.TabIndex = 12;

@@ -209,6 +209,12 @@
     <Compile Include="AnalisisFolios.Designer.cs">
       <DependentUpon>AnalisisFolios.cs</DependentUpon>
     </Compile>
+    <Compile Include="AnyTeam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnyTeam.Designer.cs">
+      <DependentUpon>AnyTeam.cs</DependentUpon>
+    </Compile>
     <Compile Include="ayuda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +304,9 @@
     </Compile>
     <EmbeddedResource Include="AnalisisFolios.resx">
       <DependentUpon>AnalisisFolios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnyTeam.resx">
+      <DependentUpon>AnyTeam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ayuda.resx">
       <DependentUpon>ayuda.cs</DependentUpon>

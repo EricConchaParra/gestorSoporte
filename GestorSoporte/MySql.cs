@@ -206,6 +206,40 @@ namespace GestorSoporte
 
         }
 
+        public static DataTable VerAccesos(string rut)
+        {
+            string cnString = connectString();
+
+            MySqlConnection cn = new MySqlConnection(cnString);
+
+            MySqlCommand cmd = new MySqlCommand(string.Format("select * from accesos where fkcliente = '{0}'; ",rut), cn);
+
+            DataSet D = new DataSet();
+
+            try
+            {
+                cn.Open();
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmd);
+                D = new DataSet();
+                DA.Fill(D, "Accesos");
+                cn.Close();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            finally
+            {
+                cn.Close();
+            }
+
+            return D.Tables["Accesos"];
+
+        }
+
+
 
 
         public static DataTable BuscaClientes(string busqueda)
@@ -667,6 +701,37 @@ namespace GestorSoporte
             }
 
         }
+
+        public static void ejecutaQuery(string query)
+        {
+
+            string cnString = connectString();
+
+            MySqlConnection cn = new MySqlConnection(cnString);
+
+            MySqlCommand cmd = new MySqlCommand(query, cn);
+
+            DataSet D = new DataSet();
+
+            try
+            {
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            finally
+            {
+                cn.Close();
+            }
+
+        }
+
 
         public static DataTable VerQuery(int id_query)
         {

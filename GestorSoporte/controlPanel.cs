@@ -640,5 +640,11 @@ namespace GestorSoporte
                 btnSend.Text = "Enviar a Slack";
             }
         }
+
+        private void btnAnyTeam_Click(object sender, EventArgs e)
+        {
+            AnyTeam at = new AnyTeam(sucData["fk_cliente"].ToString());
+            at.Show();
+        }
     }
 }

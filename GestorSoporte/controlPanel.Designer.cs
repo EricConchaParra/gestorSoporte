@@ -77,6 +77,8 @@
             this.btnUrl = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.btnAnyTeam = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -89,6 +91,7 @@
             this.groupBox7.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSsh
@@ -585,12 +588,35 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.btnAnyTeam);
+            this.groupBox12.ForeColor = System.Drawing.Color.Navy;
+            this.groupBox12.Location = new System.Drawing.Point(12, 274);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(134, 58);
+            this.groupBox12.TabIndex = 7;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "AnyDesk / TeamViewer";
+            // 
+            // btnAnyTeam
+            // 
+            this.btnAnyTeam.ForeColor = System.Drawing.Color.Black;
+            this.btnAnyTeam.Location = new System.Drawing.Point(12, 19);
+            this.btnAnyTeam.Name = "btnAnyTeam";
+            this.btnAnyTeam.Size = new System.Drawing.Size(111, 23);
+            this.btnAnyTeam.TabIndex = 5;
+            this.btnAnyTeam.Text = "Lista de clientes";
+            this.btnAnyTeam.UseVisualStyleBackColor = true;
+            this.btnAnyTeam.Click += new System.EventHandler(this.btnAnyTeam_Click);
+            // 
             // controlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(804, 574);
+            this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox7);
@@ -624,6 +650,7 @@
             this.groupBox7.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,5 +704,7 @@
         private System.Windows.Forms.CheckBox cbCobrar;
         private System.Windows.Forms.CheckBox cbSlack;
         private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Button btnAnyTeam;
     }
 }
