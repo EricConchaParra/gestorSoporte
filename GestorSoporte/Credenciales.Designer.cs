@@ -1,6 +1,6 @@
 ﻿namespace GestorSoporte
 {
-    partial class AnyTeam
+    partial class Credenciales
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnyTeam));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Credenciales));
             this.dgvAccesos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBorrar = new System.Windows.Forms.Button();
@@ -46,12 +46,15 @@
             this.cbTipoAcceso = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvAccesos
@@ -63,7 +66,7 @@
             this.dgvAccesos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAccesos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvAccesos.GridColor = System.Drawing.SystemColors.Control;
-            this.dgvAccesos.Location = new System.Drawing.Point(2, 12);
+            this.dgvAccesos.Location = new System.Drawing.Point(2, 55);
             this.dgvAccesos.Name = "dgvAccesos";
             this.dgvAccesos.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -75,7 +78,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAccesos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAccesos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAccesos.Size = new System.Drawing.Size(322, 301);
+            this.dgvAccesos.Size = new System.Drawing.Size(322, 258);
             this.dgvAccesos.TabIndex = 0;
             this.dgvAccesos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dgvAccesos.CurrentCellChanged += new System.EventHandler(this.dgvAccesos_CurrentCellChanged);
@@ -153,7 +156,7 @@
             this.groupBox4.Size = new System.Drawing.Size(280, 51);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "ID Asociado";
+            this.groupBox4.Text = "Usuario / ID";
             // 
             // btnCpId
             // 
@@ -190,7 +193,7 @@
             this.groupBox3.Size = new System.Drawing.Size(159, 51);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tipo Acceso";
+            this.groupBox3.Text = "Tipo Credencial";
             // 
             // cbTipoAcceso
             // 
@@ -217,16 +220,35 @@
             this.txtDescripcion.Size = new System.Drawing.Size(188, 20);
             this.txtDescripcion.TabIndex = 0;
             // 
-            // AnyTeam
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Location = new System.Drawing.Point(2, 8);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(322, 41);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Buscar";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 15);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(310, 20);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // Credenciales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(718, 321);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvAccesos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AnyTeam";
+            this.Name = "Credenciales";
             this.Text = "Acceso AnyDesk / TeamViewer";
             this.Load += new System.EventHandler(this.AnyTeam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).EndInit();
@@ -238,6 +260,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -259,5 +283,7 @@
         private System.Windows.Forms.Button btnCpId;
         private System.Windows.Forms.Button btnCpPass;
         private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

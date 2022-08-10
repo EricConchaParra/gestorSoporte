@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace GestorSoporte
 {
-    public partial class AnyTeam : Form
+    public partial class Credenciales : Form
     {
 
         public string rutCliente = "";
-        public AnyTeam(string rut)
+        public Credenciales(string rut)
         {
             InitializeComponent();
             rutCliente = rut;
@@ -31,6 +31,8 @@ namespace GestorSoporte
 
             tipoAcc.Rows.Add("AnyDesk", "AnyDesk");
             tipoAcc.Rows.Add("TeamViewer", "TeamViewer");
+            tipoAcc.Rows.Add("Sitio Web", "Sitio Web");
+            tipoAcc.Rows.Add("Otro", "Otro");
 
             //Asignar DataSource
             cbTipoAcceso.DataSource = tipoAcc;
@@ -68,6 +70,7 @@ namespace GestorSoporte
             txtDescripcion.Text = this.dgvAccesos.CurrentRow.Cells[2].Value.ToString();
             txtId.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[4].Value.ToString());
             txtPass.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[5].Value.ToString());
+            cbTipoAcceso.SelectedValue = this.dgvAccesos.CurrentRow.Cells[3].Value.ToString();
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -101,7 +104,7 @@ namespace GestorSoporte
         private void btnModificar_Click(object sender, EventArgs e)
         {
             //Captura los datos de los TextBox
-            int id = 1;
+            int id = Int32.Parse(this.dgvAccesos.CurrentRow.Cells[0].Value.ToString());
             string descripcion = txtDescripcion.Text;
             string tipoAcceso = cbTipoAcceso.Text;
             string IdAsociado = txtId.Text;
@@ -149,6 +152,13 @@ namespace GestorSoporte
         private void dgvAccesos_CurrentCellChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //Filtrar las credenciales
+            //(dataGridViewFields.DataSource as DataTable).DefaultView.RowFilter = string.Format("Field = '{0}'", textBoxFilter.Text);
+            //Fuente: https://stackoverflow.com/questions/5843537/filtering-datagridview-without-changing-datasource
         }
     }
 }
