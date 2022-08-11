@@ -597,7 +597,7 @@
             this.groupBox12.Size = new System.Drawing.Size(134, 58);
             this.groupBox12.TabIndex = 7;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "AnyDesk / TeamViewer";
+            this.groupBox12.Text = "Credenciales";
             // 
             // btnAnyTeam
             // 
@@ -606,7 +606,7 @@
             this.btnAnyTeam.Name = "btnAnyTeam";
             this.btnAnyTeam.Size = new System.Drawing.Size(111, 23);
             this.btnAnyTeam.TabIndex = 5;
-            this.btnAnyTeam.Text = "Lista de clientes";
+            this.btnAnyTeam.Text = "Bóveda de Claves";
             this.btnAnyTeam.UseVisualStyleBackColor = true;
             this.btnAnyTeam.Click += new System.EventHandler(this.btnAnyTeam_Click);
             // 

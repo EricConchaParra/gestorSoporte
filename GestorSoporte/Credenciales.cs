@@ -14,6 +14,11 @@ namespace GestorSoporte
     {
 
         public string rutCliente = "";
+        DataTable accesos = new DataTable();
+
+        //Crea un bindingSource
+        BindingSource bs = new BindingSource();
+
         public Credenciales(string rut)
         {
             InitializeComponent();
@@ -43,11 +48,14 @@ namespace GestorSoporte
 
         private void UpdateTabla()
         {
-            //Consultar lista
-            DataTable accesos = MySql.VerAccesos(rutCliente);
+            //Get data from MySQL
+            accesos = MySql.VerAccesos(rutCliente);
+
+            //Asigna el DataTable al BS
+            bs.DataSource = accesos;
 
             //Vincular a DGV
-            dgvAccesos.DataSource = accesos;
+            dgvAccesos.DataSource = bs;
 
             //Darle formato a la tabla (ancho de columnas) TODO
             dgvAccesos.Columns[0].Visible = false;
@@ -134,6 +142,20 @@ namespace GestorSoporte
         private void btnBorrar_Click(object sender, EventArgs e)
         {
             //Borra la fila seleccionada (pregunta primero)
+            DialogResult respuesta = MessageBox.Show("¿Está seguro de que desea eliminar esta fila?",
+                                            "Confirme",
+                                            MessageBoxButtons.OKCancel,
+                                            MessageBoxIcon.Question);
+
+            if (respuesta == DialogResult.OK)
+            {
+                MySql.BorraCredencial(Int32.Parse(this.dgvAccesos.CurrentRow.Cells[0].Value.ToString()));
+            }
+
+            //Limpiar textboxes
+            txtDescripcion.Text = "";
+            txtId.Text = "";
+            txtPass.Text = "";
 
             //Update tabla
             UpdateTabla();
@@ -141,12 +163,12 @@ namespace GestorSoporte
         }
         private void btnCpId_Click(object sender, EventArgs e)
         {
-            //Envía al portapapeles el campo ID
+            Clipboard.SetText(txtId.Text);
         }
 
         private void btnCpPass_Click(object sender, EventArgs e)
         {
-            //Envia al portapapeles el campo password
+            Clipboard.SetText(txtPass.Text);
         }
 
         private void dgvAccesos_CurrentCellChanged(object sender, EventArgs e)
@@ -157,7 +179,8 @@ namespace GestorSoporte
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             //Filtrar las credenciales
-            //(dataGridViewFields.DataSource as DataTable).DefaultView.RowFilter = string.Format("Field = '{0}'", textBoxFilter.Text);
+            bs.Filter = string.Format("descripcion LIKE '%{0}%' or tipoAcceso LIKE '%{0}%'", txtBusqueda.Text);
+
             //Fuente: https://stackoverflow.com/questions/5843537/filtering-datagridview-without-changing-datasource
         }
     }

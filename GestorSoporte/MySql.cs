@@ -830,6 +830,38 @@ namespace GestorSoporte
 
         }
 
+        public static void BorraCredencial(int id_query)
+        {
+            int id = id_query;
+
+            string cnString = connectString();
+
+            MySqlConnection cn = new MySqlConnection(cnString);
+
+            MySqlCommand cmd = new MySqlCommand(string.Format("delete from accesos where id = '{0}';", id), cn);
+
+            DataSet D = new DataSet();
+
+            try
+            {
+                cn.Open();
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            finally
+            {
+                cn.Close();
+            }
+
+        }
+
+
 
         public static String Ayuda(string tema)
         {

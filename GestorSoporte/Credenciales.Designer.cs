@@ -47,7 +47,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -222,7 +222,7 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Controls.Add(this.txtBusqueda);
             this.groupBox6.Location = new System.Drawing.Point(2, 8);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(322, 41);
@@ -230,13 +230,13 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Buscar";
             // 
-            // textBox1
+            // txtBusqueda
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(310, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtBusqueda.Location = new System.Drawing.Point(6, 15);
+            this.txtBusqueda.Name = "txtBusqueda";
+            this.txtBusqueda.Size = new System.Drawing.Size(310, 20);
+            this.txtBusqueda.TabIndex = 0;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Credenciales
             // 
@@ -249,6 +249,7 @@
             this.Controls.Add(this.dgvAccesos);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Credenciales";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acceso AnyDesk / TeamViewer";
             this.Load += new System.EventHandler(this.AnyTeam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).EndInit();
@@ -284,6 +285,6 @@
         private System.Windows.Forms.Button btnCpPass;
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBusqueda;
     }
 }
