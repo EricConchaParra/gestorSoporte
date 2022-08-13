@@ -10,7 +10,7 @@ namespace GestorSoporte
 {
     internal class sendNotion
     {
-        public static void grabaSoporte(string descripcion, string nota, string fantasiaCliente, string funcionario, int tiempo, string fecha, string cobrar, string horaInicio)
+        public static void grabaSoporte(string descripcion, string nota, string fantasiaCliente, string sucursal, string funcionario, int tiempo, string fecha, string cobrar, string horaInicio)
         {
             try {
 
@@ -85,7 +85,7 @@ namespace GestorSoporte
                             {
                                 text = new
                                 {
-                                    content = "Inicio evento: " + horaInicio + "\n" + nota
+                                    content = "Inicio evento: " + horaInicio +" - Sucursal: " + sucursal + "\n\n" + nota
                                 }
                             }
                         }

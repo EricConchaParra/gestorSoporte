@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GestorSoporte
+
+    
 {
     public partial class Credenciales : Form
     {
@@ -70,16 +72,24 @@ namespace GestorSoporte
 
             dgvAccesos.Columns[4].Visible = false;
             dgvAccesos.Columns[5].Visible = false;
+            dgvAccesos.Columns[6].Visible = false;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //Trae datos de fila seleccionada
+            traeDatos();
+        }
+
+        private void traeDatos()
+        {
             txtDescripcion.Text = this.dgvAccesos.CurrentRow.Cells[2].Value.ToString();
             txtId.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[4].Value.ToString());
             txtPass.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[5].Value.ToString());
+            txtUrl.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[6].Value.ToString());
             cbTipoAcceso.SelectedValue = this.dgvAccesos.CurrentRow.Cells[3].Value.ToString();
         }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             //Captura los datos de los TextBox
@@ -87,24 +97,28 @@ namespace GestorSoporte
             string tipoAcceso = cbTipoAcceso.Text;
             string IdAsociado = txtId.Text;
             string PassAsociado = txtPass.Text;
+            string Url = txtUrl.Text;
 
-            //Encripta ID y Pass Asociado
+            //Encripta ID,  Pass Asociado y URL
             IdAsociado = Seguridad.Encriptar(IdAsociado);
             PassAsociado = Seguridad.Encriptar(PassAsociado);
+            Url = Seguridad.Encriptar(Url);
 
             //Graba MySQL
-            string insert = string.Format("insert into accesos (fkcliente, descripcion, tipoAcceso, idAcceso, passAcceso) values " +
-                                        "('{0}','{1}','{2}','{3}','{4}');",
+            string insert = string.Format("insert into accesos (fkcliente, descripcion, tipoAcceso, idAcceso, passAcceso, url) values " +
+                                        "('{0}','{1}','{2}','{3}','{4}','{5}');",
                                         rutCliente,
                                         descripcion,
                                         tipoAcceso,
                                         IdAsociado,
-                                        PassAsociado);
+                                        PassAsociado,
+                                        Url);
 
             MySql.ejecutaQuery(insert);
 
             //Update tabla
             UpdateTabla();
+            limpiaTxt();
 
         }
 
@@ -117,25 +131,30 @@ namespace GestorSoporte
             string tipoAcceso = cbTipoAcceso.Text;
             string IdAsociado = txtId.Text;
             string PassAsociado = txtPass.Text;
+            string Url = txtUrl.Text;
 
 
             //Encripta ID y Pass Asociado
             IdAsociado = Seguridad.Encriptar(IdAsociado);
             PassAsociado = Seguridad.Encriptar(PassAsociado);
+            Url = Seguridad.Encriptar(Url);
 
             //Graba MySQL
-            string update = string.Format("update accesos set descripcion  = '{0}', tipoAcceso  = '{1}', idAcceso  = '{2}', passAcceso = '{3}'" +
-                                        " where id = {4};",
+            string update = string.Format("update accesos set descripcion  = '{0}', tipoAcceso  = '{1}', idAcceso  = '{2}', passAcceso = '{3}'," +
+                                        " url = '{4}'" +
+                                        " where id = {5};",
                                         descripcion,
                                         tipoAcceso,
                                         IdAsociado,
                                         PassAsociado,
+                                        Url,
                                         id);
 
             MySql.ejecutaQuery(update);
 
             //Update tabla
             UpdateTabla();
+            limpiaTxt();
 
         }
 
@@ -152,13 +171,20 @@ namespace GestorSoporte
                 MySql.BorraCredencial(Int32.Parse(this.dgvAccesos.CurrentRow.Cells[0].Value.ToString()));
             }
 
+
+            //Update tabla
+            UpdateTabla();
+            limpiaTxt();
+
+        }
+
+        private void limpiaTxt()
+        {
             //Limpiar textboxes
             txtDescripcion.Text = "";
             txtId.Text = "";
             txtPass.Text = "";
-
-            //Update tabla
-            UpdateTabla();
+            txtUrl.Text = "";
 
         }
         private void btnCpId_Click(object sender, EventArgs e)
@@ -182,6 +208,16 @@ namespace GestorSoporte
             bs.Filter = string.Format("descripcion LIKE '%{0}%' or tipoAcceso LIKE '%{0}%'", txtBusqueda.Text);
 
             //Fuente: https://stackoverflow.com/questions/5843537/filtering-datagridview-without-changing-datasource
+        }
+
+        private void btnCpUrl_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtUrl.Text);
+        }
+
+        private void dgvAccesos_SelectionChanged(object sender, EventArgs e)
+        {
+            traeDatos();
         }
     }
 }

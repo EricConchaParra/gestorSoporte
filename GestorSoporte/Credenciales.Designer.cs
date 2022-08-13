@@ -33,6 +33,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Credenciales));
             this.dgvAccesos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnCpUrl = new System.Windows.Forms.Button();
+            this.txtUrl = new System.Windows.Forms.TextBox();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -50,6 +53,7 @@
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -82,9 +86,11 @@
             this.dgvAccesos.TabIndex = 0;
             this.dgvAccesos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dgvAccesos.CurrentCellChanged += new System.EventHandler(this.dgvAccesos_CurrentCellChanged);
+            this.dgvAccesos.SelectionChanged += new System.EventHandler(this.dgvAccesos_SelectionChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox7);
             this.groupBox1.Controls.Add(this.btnBorrar);
             this.groupBox1.Controls.Add(this.btnModificar);
             this.groupBox1.Controls.Add(this.groupBox5);
@@ -98,6 +104,34 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de acceso";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.btnCpUrl);
+            this.groupBox7.Controls.Add(this.txtUrl);
+            this.groupBox7.Location = new System.Drawing.Point(6, 236);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(280, 51);
+            this.groupBox7.TabIndex = 4;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "URL";
+            // 
+            // btnCpUrl
+            // 
+            this.btnCpUrl.Location = new System.Drawing.Point(198, 17);
+            this.btnCpUrl.Name = "btnCpUrl";
+            this.btnCpUrl.Size = new System.Drawing.Size(75, 23);
+            this.btnCpUrl.TabIndex = 2;
+            this.btnCpUrl.Text = "Copiar";
+            this.btnCpUrl.UseVisualStyleBackColor = true;
+            this.btnCpUrl.Click += new System.EventHandler(this.btnCpUrl_Click);
+            // 
+            // txtUrl
+            // 
+            this.txtUrl.Location = new System.Drawing.Point(6, 19);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(188, 20);
+            this.txtUrl.TabIndex = 1;
             // 
             // btnBorrar
             // 
@@ -123,7 +157,7 @@
             // 
             this.groupBox5.Controls.Add(this.btnCpPass);
             this.groupBox5.Controls.Add(this.txtPass);
-            this.groupBox5.Location = new System.Drawing.Point(6, 171);
+            this.groupBox5.Location = new System.Drawing.Point(6, 175);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(280, 51);
             this.groupBox5.TabIndex = 4;
@@ -243,7 +277,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(718, 321);
+            this.ClientSize = new System.Drawing.Size(715, 321);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvAccesos);
@@ -254,6 +288,8 @@
             this.Load += new System.EventHandler(this.AnyTeam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -286,5 +322,8 @@
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtBusqueda;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnCpUrl;
+        private System.Windows.Forms.TextBox txtUrl;
     }
 }

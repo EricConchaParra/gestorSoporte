@@ -590,7 +590,7 @@ namespace GestorSoporte
 
                 string cobranza = cobrar ? "Si" : "No";
 
-                sendNotion.grabaSoporte(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, funcionario, tiempo, fecha, cobranza, horaInicio);
+                sendNotion.grabaSoporte(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, sucData["sucursal_nombre"].ToString(), funcionario, tiempo, fecha, cobranza, horaInicio);
 
                 if (slack)
                 {
