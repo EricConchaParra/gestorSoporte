@@ -25,8 +25,8 @@ Esta aplicación permite:
 
 - Conectar por SSH (Putty), SCP (WinSCP) y RDP (Conexión a Escritorio Remoto) usando los usuarios y contraseñas guardados encriptados en una base de datos MySQL
 - Almacenar datos relevantes de cada cliente/sucursal y un campo para notas.
-- Envío de updates del soporte a través de *Slack*. Las notificaciones incluyen el estado del soporte, identificación del funcionario y cliente, tiempo transcurrido y un espacio para notas.
-- Al terminar el soporte (y si está configurado para ello), el usuario podrá escribir en una *base de datos de Notion* el evento y dejar así un registro para el equipo (y futuras referencias).
+- Envío de updates del soporte a través de `Slack`. Las notificaciones incluyen el estado del soporte, identificación del funcionario y cliente, tiempo transcurrido y un espacio para notas.
+- Al terminar el soporte (y si está configurado para ello), el usuario podrá escribir en una `base de datos de Notion` el evento y dejar así un registro para el equipo (y futuras referencias).
 
 _Este proyecto está en constante desarrollo_
 
