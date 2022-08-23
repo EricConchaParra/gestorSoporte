@@ -51,6 +51,7 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -90,6 +91,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLimpiar);
             this.groupBox1.Controls.Add(this.groupBox7);
             this.groupBox1.Controls.Add(this.btnBorrar);
             this.groupBox1.Controls.Add(this.btnModificar);
@@ -114,7 +116,7 @@
             this.groupBox7.Size = new System.Drawing.Size(280, 51);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "URL";
+            this.groupBox7.Text = "URL (incluya http o https)";
             // 
             // btnCpUrl
             // 
@@ -122,7 +124,7 @@
             this.btnCpUrl.Name = "btnCpUrl";
             this.btnCpUrl.Size = new System.Drawing.Size(75, 23);
             this.btnCpUrl.TabIndex = 2;
-            this.btnCpUrl.Text = "Copiar";
+            this.btnCpUrl.Text = "Ir a URL";
             this.btnCpUrl.UseVisualStyleBackColor = true;
             this.btnCpUrl.Click += new System.EventHandler(this.btnCpUrl_Click);
             // 
@@ -131,7 +133,7 @@
             this.txtUrl.Location = new System.Drawing.Point(6, 19);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(188, 20);
-            this.txtUrl.TabIndex = 1;
+            this.txtUrl.TabIndex = 4;
             // 
             // btnBorrar
             // 
@@ -179,7 +181,7 @@
             this.txtPass.Location = new System.Drawing.Point(6, 19);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(188, 20);
-            this.txtPass.TabIndex = 2;
+            this.txtPass.TabIndex = 3;
             // 
             // groupBox4
             // 
@@ -207,7 +209,7 @@
             this.txtId.Location = new System.Drawing.Point(6, 19);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(188, 20);
-            this.txtId.TabIndex = 1;
+            this.txtId.TabIndex = 2;
             // 
             // btnAgregar
             // 
@@ -215,7 +217,7 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(63, 26);
             this.btnAgregar.TabIndex = 5;
-            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.Text = "Añadir";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
@@ -235,7 +237,7 @@
             this.cbTipoAcceso.Location = new System.Drawing.Point(6, 19);
             this.cbTipoAcceso.Name = "cbTipoAcceso";
             this.cbTipoAcceso.Size = new System.Drawing.Size(140, 21);
-            this.cbTipoAcceso.TabIndex = 0;
+            this.cbTipoAcceso.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -272,6 +274,16 @@
             this.txtBusqueda.TabIndex = 0;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(213, 19);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(63, 26);
+            this.btnLimpiar.TabIndex = 8;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // Credenciales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,7 +296,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Credenciales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Acceso AnyDesk / TeamViewer";
+            this.Text = "Credenciales";
             this.Load += new System.EventHandler(this.AnyTeam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -325,5 +337,6 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnCpUrl;
         private System.Windows.Forms.TextBox txtUrl;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

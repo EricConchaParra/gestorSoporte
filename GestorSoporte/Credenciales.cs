@@ -16,6 +16,7 @@ namespace GestorSoporte
     {
 
         public string rutCliente = "";
+        public bool isNew = false;
         DataTable accesos = new DataTable();
 
         //Crea un bindingSource
@@ -78,7 +79,15 @@ namespace GestorSoporte
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //Trae datos de fila seleccionada
-            traeDatos();
+            try
+            {
+                txtId.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[4].Value.ToString());
+                traeDatos();
+            }
+            catch
+            {
+                //nada
+            }
         }
 
         private void traeDatos()
@@ -88,6 +97,16 @@ namespace GestorSoporte
             txtPass.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[5].Value.ToString());
             txtUrl.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[6].Value.ToString());
             cbTipoAcceso.SelectedValue = this.dgvAccesos.CurrentRow.Cells[3].Value.ToString();
+
+            if (txtUrl.Text == "")
+            {
+                btnCpUrl.Enabled = false;
+            }
+            else
+            {
+                btnCpUrl.Enabled = true;
+            }
+                
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -98,6 +117,12 @@ namespace GestorSoporte
             string IdAsociado = txtId.Text;
             string PassAsociado = txtPass.Text;
             string Url = txtUrl.Text;
+
+            if (descripcion == "")
+            {
+                alerta.error("Error", "No puedes agregar una descripción vacía");
+                return;
+            }
 
             //Encripta ID,  Pass Asociado y URL
             IdAsociado = Seguridad.Encriptar(IdAsociado);
@@ -116,7 +141,6 @@ namespace GestorSoporte
 
             MySql.ejecutaQuery(insert);
 
-            //Update tabla
             UpdateTabla();
             limpiaTxt();
 
@@ -125,8 +149,29 @@ namespace GestorSoporte
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            int id = 0;            
+            try
+            {
+                id = Int32.Parse(this.dgvAccesos.CurrentRow.Cells[0].Value.ToString());
+            }
+            catch
+            {
+                return;
+            }
+                
+            //Modifica la fila seleccionada (pregunta primero)
+            DialogResult respuesta = MessageBox.Show("¿Desea sobreescribir esta credencial?",
+                                            "Confirme",
+                                            MessageBoxButtons.OKCancel,
+                                            MessageBoxIcon.Question);
+
+            if (DialogResult.OK != respuesta)
+            {
+                return;
+            }
+
             //Captura los datos de los TextBox
-            int id = Int32.Parse(this.dgvAccesos.CurrentRow.Cells[0].Value.ToString());
+            id = Int32.Parse(this.dgvAccesos.CurrentRow.Cells[0].Value.ToString());
             string descripcion = txtDescripcion.Text;
             string tipoAcceso = cbTipoAcceso.Text;
             string IdAsociado = txtId.Text;
@@ -155,26 +200,33 @@ namespace GestorSoporte
             //Update tabla
             UpdateTabla();
             limpiaTxt();
-
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
-            //Borra la fila seleccionada (pregunta primero)
-            DialogResult respuesta = MessageBox.Show("¿Está seguro de que desea eliminar esta fila?",
-                                            "Confirme",
-                                            MessageBoxButtons.OKCancel,
-                                            MessageBoxIcon.Question);
-
-            if (respuesta == DialogResult.OK)
+            try
             {
-                MySql.BorraCredencial(Int32.Parse(this.dgvAccesos.CurrentRow.Cells[0].Value.ToString()));
+                int idReg = Int32.Parse(this.dgvAccesos.CurrentRow.Cells[0].Value.ToString());
+                //Borra la fila seleccionada (pregunta primero)
+                DialogResult respuesta = MessageBox.Show("¿Está seguro de que desea eliminar esta fila?",
+                                                "Confirme",
+                                                MessageBoxButtons.OKCancel,
+                                                MessageBoxIcon.Question);
+
+                if (respuesta == DialogResult.OK)
+                {
+                    MySql.BorraCredencial(idReg);
+                }
+
+
+                //Update tabla
+                UpdateTabla();
+                limpiaTxt();
             }
-
-
-            //Update tabla
-            UpdateTabla();
-            limpiaTxt();
+            catch
+            {
+                return;
+            }
 
         }
 
@@ -212,12 +264,17 @@ namespace GestorSoporte
 
         private void btnCpUrl_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(txtUrl.Text);
+            System.Diagnostics.Process.Start(txtUrl.Text);
         }
 
         private void dgvAccesos_SelectionChanged(object sender, EventArgs e)
         {
             traeDatos();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            limpiaTxt();
         }
     }
 }

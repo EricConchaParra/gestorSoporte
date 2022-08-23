@@ -239,6 +239,12 @@ namespace GestorSoporte
 
         private void EscribeDB(string accion)
         {
+            if (txtIP.Text=="")
+            {
+                alerta.error("Error", "No se ha definido una IP");
+                return;
+            }
+
             //Llenar los campos con los datos de sucursal
             //Identificacion
             string sucursal_correl = txtSucursalCorrel.Text;
