@@ -264,7 +264,8 @@ namespace GestorSoporte
 
         private void btnCpUrl_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(txtUrl.Text);
+            //System.Diagnostics.Process.Start(txtUrl.Text);
+            Clipboard.SetText(txtUrl.Text);
         }
 
         private void dgvAccesos_SelectionChanged(object sender, EventArgs e)

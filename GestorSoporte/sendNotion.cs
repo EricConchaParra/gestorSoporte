@@ -10,7 +10,9 @@ namespace GestorSoporte
 {
     internal class sendNotion
     {
-        public static void grabaSoporte(string descripcion, string nota, string fantasiaCliente, string sucursal, string funcionario, int tiempo, string fecha, string cobrar, string horaInicio)
+        public static void grabaSoporte(string descripcion, string nota, string fantasiaCliente, string sucursal, 
+                                        string funcionario, int tiempo, string fecha, string cobrar, string horaInicio,
+                                        string origen)
         {
             try {
 
@@ -48,6 +50,14 @@ namespace GestorSoporte
                         select = new
                         {
                             name = funcionario
+                        }
+                    },
+
+                    Origen = new
+                    {
+                        select = new
+                        {
+                            name = origen
                         }
                     },
 

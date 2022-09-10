@@ -79,6 +79,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.btnAnyTeam = new System.Windows.Forms.Button();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.cbOrigen = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -92,6 +94,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox13.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSsh
@@ -337,6 +340,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.groupBox13);
             this.groupBox8.Controls.Add(this.groupBox11);
             this.groupBox8.Controls.Add(this.groupBox9);
             this.groupBox8.Location = new System.Drawing.Point(165, 20);
@@ -370,7 +374,7 @@
             this.groupBox9.Controls.Add(this.txtDescripcionEvento);
             this.groupBox9.Location = new System.Drawing.Point(7, 19);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(449, 46);
+            this.groupBox9.Size = new System.Drawing.Size(280, 46);
             this.groupBox9.TabIndex = 4;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Descripción del Evento";
@@ -379,7 +383,7 @@
             // 
             this.txtDescripcionEvento.Location = new System.Drawing.Point(6, 18);
             this.txtDescripcionEvento.Name = "txtDescripcionEvento";
-            this.txtDescripcionEvento.Size = new System.Drawing.Size(437, 20);
+            this.txtDescripcionEvento.Size = new System.Drawing.Size(268, 20);
             this.txtDescripcionEvento.TabIndex = 0;
             // 
             // groupBox6
@@ -610,6 +614,24 @@
             this.btnAnyTeam.UseVisualStyleBackColor = true;
             this.btnAnyTeam.Click += new System.EventHandler(this.btnAnyTeam_Click);
             // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.cbOrigen);
+            this.groupBox13.Location = new System.Drawing.Point(293, 19);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(163, 46);
+            this.groupBox13.TabIndex = 5;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Origen";
+            // 
+            // cbOrigen
+            // 
+            this.cbOrigen.FormattingEnabled = true;
+            this.cbOrigen.Location = new System.Drawing.Point(6, 17);
+            this.cbOrigen.Name = "cbOrigen";
+            this.cbOrigen.Size = new System.Drawing.Size(151, 21);
+            this.cbOrigen.TabIndex = 0;
+            // 
             // controlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -651,6 +673,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
+            this.groupBox13.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -706,5 +729,7 @@
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.Button btnAnyTeam;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.ComboBox cbOrigen;
     }
 }

@@ -58,6 +58,21 @@ namespace GestorSoporte
 
         private void Carga()
         {
+            //Inicio checkbox origen
+            DataTable dtOrigen = new DataTable();
+            dtOrigen.Columns.Add("nombre");
+            dtOrigen.Columns.Add("codigo");
+            dtOrigen.Rows.Add("Cliente", "Cliente");
+            dtOrigen.Rows.Add("Bug", "Bug");
+            dtOrigen.Rows.Add("Plataforma", "Plataforma");
+            dtOrigen.Rows.Add("Mantenimiento", "Mantenimiento");
+            dtOrigen.Rows.Add("Capacitación", "Capacitación");
+
+            cbOrigen.DataSource = dtOrigen;
+            cbOrigen.DisplayMember = "nombre";
+            cbOrigen.ValueMember = "codigo";
+
+            
             //Preparo todo para slack (si corresponde)
             if (sucData["slack"].ToString() == "1")
             {
@@ -513,7 +528,7 @@ namespace GestorSoporte
             txtTiempo.Text = ts.ToString("mm\\:ss");
         }
 
-        public void sendSlack(string descripcion, string mensaje, bool cobrar, bool fin)
+        public void sendSlack(string descripcion, string mensaje, bool cobrar, bool fin, string origen)
         {
             //Evento en curso o finalizado
             string tipoEvento = "finalizado :white_check_mark:";
@@ -548,6 +563,7 @@ namespace GestorSoporte
                        "*Atendido por:* " + datos_usuario[3] + "\n" +
                        "*Hora inicio:* " + horaInicio + "\n" +
                        (tiempo > 0 ? "*Tiempo (minutos):* " + tiempo.ToString() + "\n": "") +
+                       "*Origen:* " + origen + "\n" +
                        "*Cobrar:* " + (cobrar ? "Si" : "No") + "\n" + 
                        "\n" +
                        "*" + descripcion + "* \n"
@@ -566,7 +582,7 @@ namespace GestorSoporte
             if (slack && !fin)
             {
                 this.UseWaitCursor = true;
-                sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin);
+                sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString());
                 this.UseWaitCursor = false;
             }
             if (fin)
@@ -590,11 +606,12 @@ namespace GestorSoporte
 
                 string cobranza = cobrar ? "Si" : "No";
 
-                sendNotion.grabaSoporte(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, sucData["sucursal_nombre"].ToString(), funcionario, tiempo, fecha, cobranza, horaInicio);
+                sendNotion.grabaSoporte(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, sucData["sucursal_nombre"].ToString(),
+                                        funcionario, tiempo, fecha, cobranza, horaInicio, cbOrigen.SelectedValue.ToString());
 
                 if (slack)
                 {
-                    sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin);
+                    sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString());
                 }
 
 

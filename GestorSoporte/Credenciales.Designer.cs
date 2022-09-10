@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Credenciales));
             this.dgvAccesos = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnCpUrl = new System.Windows.Forms.Button();
             this.txtUrl = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
-            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccesos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -107,6 +107,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de acceso";
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(213, 19);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(63, 26);
+            this.btnLimpiar.TabIndex = 8;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.btnCpUrl);
@@ -124,7 +134,7 @@
             this.btnCpUrl.Name = "btnCpUrl";
             this.btnCpUrl.Size = new System.Drawing.Size(75, 23);
             this.btnCpUrl.TabIndex = 2;
-            this.btnCpUrl.Text = "Ir a URL";
+            this.btnCpUrl.Text = "Copiar";
             this.btnCpUrl.UseVisualStyleBackColor = true;
             this.btnCpUrl.Click += new System.EventHandler(this.btnCpUrl_Click);
             // 
@@ -273,16 +283,6 @@
             this.txtBusqueda.Size = new System.Drawing.Size(310, 20);
             this.txtBusqueda.TabIndex = 0;
             this.txtBusqueda.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Location = new System.Drawing.Point(213, 19);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(63, 26);
-            this.btnLimpiar.TabIndex = 8;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // Credenciales
             // 
