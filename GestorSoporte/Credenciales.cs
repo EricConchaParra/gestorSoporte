@@ -92,19 +92,26 @@ namespace GestorSoporte
 
         private void traeDatos()
         {
-            txtDescripcion.Text = this.dgvAccesos.CurrentRow.Cells[2].Value.ToString();
-            txtId.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[4].Value.ToString());
-            txtPass.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[5].Value.ToString());
-            txtUrl.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[6].Value.ToString());
-            cbTipoAcceso.SelectedValue = this.dgvAccesos.CurrentRow.Cells[3].Value.ToString();
+            try
+            {
+                txtDescripcion.Text = this.dgvAccesos.CurrentRow.Cells[2].Value.ToString();
+                txtId.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[4].Value.ToString());
+                txtPass.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[5].Value.ToString());
+                txtUrl.Text = Seguridad.DesEncriptar(this.dgvAccesos.CurrentRow.Cells[6].Value.ToString());
+                cbTipoAcceso.SelectedValue = this.dgvAccesos.CurrentRow.Cells[3].Value.ToString();
 
-            if (txtUrl.Text == "")
-            {
-                btnCpUrl.Enabled = false;
+                if (txtUrl.Text == "")
+                {
+                    btnCpUrl.Enabled = false;
+                }
+                else
+                {
+                    btnCpUrl.Enabled = true;
+                }
             }
-            else
+            catch
             {
-                btnCpUrl.Enabled = true;
+                //Sin excepcion
             }
                 
         }
