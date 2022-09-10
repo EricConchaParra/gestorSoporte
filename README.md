@@ -55,6 +55,10 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 - Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado ([ver código en GitHub](https://github.com/EricConchaParra/encrypt))
 
 ## Versiones
+### 2.3.1 (10-09-2022)
+- Añadido URL para cada contraseña, también puedes copiar usuario, pass y URL con un clic.
+- Añadido "Origen" a descripción del evento de soporte. Ésto permite mejorar las estadísticas obtenidas desde la base de datos de Notion, a fin de analizar si el servicio tuvo su origen por bug, problemas de plataforma, a solicitud del cliente o parte del mantenimiento (por contrato).
+
 ### 2.3.0 (11-08-2022)
 - Añadido un gestor de contraseñas propio para cada cliente.
 - Puedes guardar Descripción, usuario y contraseña para cada cliente y tenerlas disponibles
@@ -62,7 +66,7 @@ en el Panel de Control.
 - Los datos se guardan encriptados en la base de datos MySQL.
 
 ### 2.2.0 (08-08-2022)
-- Puedes editar la lista de equipo de soporte
+- Puedes editar la lista del equipo de soporte
 
 ### 2.1.0 (04-08-2022)
 - El contador de tiempo de soporte comienza automáticamente cuando al cliente.
