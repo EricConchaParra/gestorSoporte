@@ -55,6 +55,10 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 - Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado ([ver código en GitHub](https://github.com/EricConchaParra/encrypt))
 
 ## Versiones
+## 2.5.0
+- Integradas las notificaciones por correo electrónico al cliente. Se utiliza un servicio SMTP que debe ser configurado por el administrador.
+- Se define si habrá notificaciones disponibles o no y a qué correos deben ser enviadas en el registro del cliente (no de sucursal).
+
 ### 2.3.1 (10-09-2022)
 - Añadido URL para cada contraseña, también puedes copiar usuario, pass y URL con un clic.
 - Añadido "Origen" a descripción del evento de soporte. Ésto permite mejorar las estadísticas obtenidas desde la base de datos de Notion, a fin de analizar si el servicio tuvo su origen por bug, problemas de plataforma, a solicitud del cliente o parte del mantenimiento (por contrato).

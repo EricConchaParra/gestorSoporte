@@ -57,6 +57,9 @@
             this.dateErp = new System.Windows.Forms.DateTimePicker();
             this.ckDte = new System.Windows.Forms.CheckBox();
             this.ckErp = new System.Windows.Forms.CheckBox();
+            this.cbNotificaCliente = new System.Windows.Forms.CheckBox();
+            this.txtEmailsNotifica = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -145,6 +148,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightBlue;
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtEmailsNotifica);
+            this.groupBox1.Controls.Add(this.cbNotificaCliente);
             this.groupBox1.Controls.Add(this.cbASSM);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -160,7 +166,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Navy;
             this.groupBox1.Location = new System.Drawing.Point(11, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(359, 248);
+            this.groupBox1.Size = new System.Drawing.Size(359, 266);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Identificación";
@@ -188,7 +194,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label9.Location = new System.Drawing.Point(11, 177);
+            this.label9.Location = new System.Drawing.Point(11, 174);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 9;
@@ -198,7 +204,7 @@
             // 
             this.cbActivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbActivo.FormattingEnabled = true;
-            this.cbActivo.Location = new System.Drawing.Point(14, 193);
+            this.cbActivo.Location = new System.Drawing.Point(14, 190);
             this.cbActivo.Name = "cbActivo";
             this.cbActivo.Size = new System.Drawing.Size(151, 21);
             this.cbActivo.TabIndex = 8;
@@ -287,7 +293,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.Navy;
             this.groupBox3.Location = new System.Drawing.Point(376, 149);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(394, 126);
+            this.groupBox3.Size = new System.Drawing.Size(394, 144);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Productos";
@@ -342,12 +348,40 @@
             this.ckErp.UseVisualStyleBackColor = true;
             this.ckErp.CheckedChanged += new System.EventHandler(this.ckErp_CheckedChanged);
             // 
+            // cbNotificaCliente
+            // 
+            this.cbNotificaCliente.AutoSize = true;
+            this.cbNotificaCliente.ForeColor = System.Drawing.Color.Black;
+            this.cbNotificaCliente.Location = new System.Drawing.Point(189, 192);
+            this.cbNotificaCliente.Name = "cbNotificaCliente";
+            this.cbNotificaCliente.Size = new System.Drawing.Size(162, 17);
+            this.cbNotificaCliente.TabIndex = 12;
+            this.cbNotificaCliente.Text = "¿Notifica Servicio vía Email?";
+            this.cbNotificaCliente.UseVisualStyleBackColor = true;
+            // 
+            // txtEmailsNotifica
+            // 
+            this.txtEmailsNotifica.Location = new System.Drawing.Point(14, 238);
+            this.txtEmailsNotifica.Name = "txtEmailsNotifica";
+            this.txtEmailsNotifica.Size = new System.Drawing.Size(327, 20);
+            this.txtEmailsNotifica.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(11, 221);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(228, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Emails para notificación (separados por comas)";
+            // 
             // Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(776, 282);
+            this.ClientSize = new System.Drawing.Size(776, 305);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -403,5 +437,8 @@
         private System.Windows.Forms.DateTimePicker dateErp;
         private System.Windows.Forms.DateTimePicker dateCertificado;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtEmailsNotifica;
+        private System.Windows.Forms.CheckBox cbNotificaCliente;
     }
 }

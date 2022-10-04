@@ -71,12 +71,13 @@ namespace GestorSoporte
             cbOrigen.DataSource = dtOrigen;
             cbOrigen.DisplayMember = "nombre";
             cbOrigen.ValueMember = "codigo";
+            
+            clieData = MySql.DatosCliente(sucData["fk_cliente"].ToString()); //para que carge siempre los datos del cliente
 
             
             //Preparo todo para slack (si corresponde)
             if (sucData["slack"].ToString() == "1")
             {
-                clieData = MySql.DatosCliente(sucData["fk_cliente"].ToString());
                 btnSend.Enabled = true;
                 txtNotaSoporte.Enabled = true;
             }
@@ -87,6 +88,16 @@ namespace GestorSoporte
                 btnSend.Text = "Enviar a #" + sucData["slackChannel"];
                 txtNotaSoporte.Enabled = false;
                 cbSlack.Enabled = false;
+            }
+
+            //Habilito o deshabilito el envío de correo notificación al cliente según su configuración
+            if (clieData.Rows[0]["notificaCliente"].ToString() == "1" && clieData.Rows[0]["notificaEmails"].ToString().Length > 3)
+            {
+                cbNotificaCliente.Enabled = true;
+            }
+            else
+            {
+                cbNotificaCliente.Enabled = false;
             }
 
             //Asigno el titutlo del form
@@ -528,7 +539,7 @@ namespace GestorSoporte
             txtTiempo.Text = ts.ToString("mm\\:ss");
         }
 
-        public void sendSlack(string descripcion, string mensaje, bool cobrar, bool fin, string origen)
+        public void sendSlack(string descripcion, string mensaje, bool cobrar, bool fin, string origen, string solicitante)
         {
             //Evento en curso o finalizado
             string tipoEvento = "finalizado :white_check_mark:";
@@ -536,6 +547,14 @@ namespace GestorSoporte
             if(!fin)
             {
                 tipoEvento = "en curso :red_circle:";
+            }
+
+            //Si hay o no un solicitante
+            string solicitadoPor = "";
+
+            if (solicitante.Length > 2)
+            {
+                solicitadoPor = "*Solicitado por*: " + solicitante + "\n";
             }
             
             //Obtengo Datos Cliente
@@ -560,6 +579,7 @@ namespace GestorSoporte
                 Text = "=================\n" +
                        "Evento " + tipoEvento + "\n" +   
                        "*Cliente:* " + nombreCliente + " - " + sucData["sucursal_nombre"] + "\n" +
+                       solicitadoPor +
                        "*Atendido por:* " + datos_usuario[3] + "\n" +
                        "*Hora inicio:* " + horaInicio + "\n" +
                        (tiempo > 0 ? "*Tiempo (minutos):* " + tiempo.ToString() + "\n": "") +
@@ -575,14 +595,18 @@ namespace GestorSoporte
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            bool notifCliente = cbNotificaCliente.Checked;
             bool cobrar = cbCobrar.Checked;
             bool slack = cbSlack.Checked;
             bool fin = cbFinEvento.Checked;
 
+            //Detén el temporizador
+            stopWatch.Stop();
+
             if (slack && !fin)
             {
                 this.UseWaitCursor = true;
-                sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString());
+                sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text);
                 this.UseWaitCursor = false;
             }
             if (fin)
@@ -593,6 +617,7 @@ namespace GestorSoporte
 
                 string configJson = FileTool.readFile("config.json");
                 string fecha = DateTime.Now.ToString("yyyy-MM-dd");
+                string fechaCorreo = DateTime.Now.ToString("dd-MM-yyyy"); //Para que tenga la estructura de latam
                 string funcionario = datos_usuario[3];
                 string databaseKey = JsonTool.searchJsonFor(configJson, "notion_database");
 
@@ -607,16 +632,29 @@ namespace GestorSoporte
                 string cobranza = cobrar ? "Si" : "No";
 
                 sendNotion.grabaSoporte(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, sucData["sucursal_nombre"].ToString(),
-                                        funcionario, tiempo, fecha, cobranza, horaInicio, cbOrigen.SelectedValue.ToString());
+                                        funcionario, tiempo, fecha, cobranza, horaInicio, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text);
 
                 if (slack)
                 {
-                    sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString());
+                    sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text);
                 }
 
+                //Notifica al cliente via email
+                if (notifCliente)
+                {
+                    DialogResult ans = MessageBox.Show("¿Estás seguro de que quieres notificar al cliente?",
+                        "Responda por favor",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
 
-                //Deten el temporizador y vacia los textos
-                stopWatch.Stop();
+                    if (ans == DialogResult.Yes)
+                    {
+                        sendMail.sendMailToClient(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, sucData["sucursal_nombre"].ToString(),
+                                        funcionario, tiempo, fechaCorreo, cobrar, horaInicio, txtSolicitante.Text, sucData["fk_cliente"].ToString());
+                    }
+                }
+
+                //Reinicia el temporizador y vacia los textos
                 timer1.Enabled = false;
 
                 txtDescripcionEvento.Text = "";

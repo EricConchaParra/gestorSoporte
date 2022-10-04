@@ -150,6 +150,13 @@ namespace GestorSoporte
             cbActivo.SelectedValue = cliData["activo"].ToString();
             checkCampos();
 
+            if (cliData["notificaCliente"].ToString() == "1")
+            {
+                cbNotificaCliente.Checked = true;
+            }
+
+            txtEmailsNotifica.Text = cliData["notificaEmails"].ToString();
+
         }
 
         private void checkCampos()
@@ -201,6 +208,8 @@ namespace GestorSoporte
             string cert_vencimiento = dateCertificado.Value.ToString("yyyy-MM-dd");
             string dte_fecha_actual = dateDte.Value.ToString("yyyy-MM-dd");
             string activo = cbActivo.SelectedValue.ToString();
+            string notificaCliente = cbNotificaCliente.Checked == true ? "1" : "0";
+            string notificaEmails = txtEmailsNotifica.Text;
 
             //Graba los datos en MySQL
 
@@ -212,8 +221,8 @@ namespace GestorSoporte
 
             string sCmd = string.Format("insert into clientes" +
                 " (rut, razon_social, fantasia, notas, funcionario, assm, " +
-                "erp, erp_fecha_actual, dte, cert_autorizado, cert_vencimiento, dte_fecha_actual, activo) " +
-                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');",
+                "erp, erp_fecha_actual, dte, cert_autorizado, cert_vencimiento, dte_fecha_actual, activo, notificaCliente, notificaEmails) " +
+                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');",
                 rut,
                 razon_social,
                 fantasia,
@@ -226,7 +235,9 @@ namespace GestorSoporte
                 cert_autorizado,
                 cert_vencimiento,
                 dte_fecha_actual,
-                activo);
+                activo,
+                notificaCliente,
+                notificaEmails);
 
             //alerta.error("", sCmd);
 
@@ -270,6 +281,8 @@ namespace GestorSoporte
             string cert_vencimiento = dateCertificado.Value.ToString("yyyy-MM-dd");
             string dte_fecha_actual = dateDte.Value.ToString("yyyy-MM-dd");
             string activo = cbActivo.SelectedValue.ToString();
+            string notificaCliente = cbNotificaCliente.Checked == true ? "1" : "0";
+            string notificaEmails = txtEmailsNotifica.Text;
 
             //Graba los datos en MySQL
 
@@ -283,7 +296,8 @@ namespace GestorSoporte
             string sCmd = string.Format("update clientes" +
                 " set razon_social = '{1}', fantasia = '{2}', notas = '{3}', funcionario = '{4}', " +
                 " assm = '{5}', erp = '{6}', erp_fecha_actual = '{7}', dte = '{8}', cert_autorizado = '{9}'," +
-                " cert_vencimiento = '{10}', dte_fecha_actual = '{11}', activo = '{12}' " +
+                " cert_vencimiento = '{10}', dte_fecha_actual = '{11}', activo = '{12}', notificaCliente =  '{13}'," +
+                " notificaEmails = '{14}'" +
                 " where rut = '{0}'",
                 rut,
                 razon_social,
@@ -297,7 +311,9 @@ namespace GestorSoporte
                 cert_autorizado,
                 cert_vencimiento,
                 dte_fecha_actual,
-                activo);
+                activo,
+                notificaCliente,
+                notificaEmails);
 
             //alerta.informacion("", sCmd);
 

@@ -12,8 +12,16 @@ namespace GestorSoporte
     {
         public static void grabaSoporte(string descripcion, string nota, string fantasiaCliente, string sucursal, 
                                         string funcionario, int tiempo, string fecha, string cobrar, string horaInicio,
-                                        string origen)
+                                        string origen, string solicitante)
         {
+            //Si hay o no un solicitante
+            string solicitadoPor = "";
+
+            if (solicitante.Length > 2)
+            {
+                solicitadoPor = "Solicitado por: " + solicitante + "\n";
+            }
+
             try {
 
                 var obj = new
@@ -95,7 +103,7 @@ namespace GestorSoporte
                             {
                                 text = new
                                 {
-                                    content = "Inicio evento: " + horaInicio +" - Sucursal: " + sucursal + "\n\n" + nota
+                                    content = "Inicio evento: " + horaInicio +" - Sucursal: " + sucursal + "\n" + solicitadoPor + "\n\n" + nota
                                 }
                             }
                         }
