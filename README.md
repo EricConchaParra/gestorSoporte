@@ -55,6 +55,10 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
 - Puedes usar la herramienta "encrypt" [disponible acá](https://github.com/EricConchaParra/encrypt/releases/download/Stable/Encriptador.exe) para crear el string encriptado ([ver código en GitHub](https://github.com/EricConchaParra/encrypt))
 
 ## Versiones
+## 2.6.0
+- Integración con Sigue® ERP para la notificación de documentos impagos y el envío de estados de cuenta junto con las notas de la atención.
+  - Se pueden definir IDs adicionales al principal (R.U.T.) para consultarlos todos y entregar información más completa
+
 ## 2.5.0
 - Integradas las notificaciones por correo electrónico al cliente. Se utiliza un servicio SMTP que debe ser configurado por el administrador.
 - Se define si habrá notificaciones disponibles o no y a qué correos deben ser enviadas en el registro del cliente (no de sucursal).

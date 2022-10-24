@@ -12,7 +12,7 @@ namespace GestorSoporte
     {
         public static void grabaSoporte(string descripcion, string nota, string fantasiaCliente, string sucursal, 
                                         string funcionario, int tiempo, string fecha, string cobrar, string horaInicio,
-                                        string origen, string solicitante)
+                                        string origen, string solicitante, bool notifCliente, string rut)
         {
             //Si hay o no un solicitante
             string solicitadoPor = "";
@@ -22,7 +22,18 @@ namespace GestorSoporte
                 solicitadoPor = "Solicitado por: " + solicitante + "\n";
             }
 
-            try {
+            //Si se notifica al cliente, incluye una nota con los correos a los que se copio
+            string notificacionCliente = "";
+
+            if (notifCliente)
+            {
+                string emails = MySql.DatosCliente(rut).Rows[0]["notificaEmails"].ToString();
+                notificacionCliente = "Notificado a: " + emails + "\n";
+            }
+
+
+            try
+            {
 
                 var obj = new
                 {
@@ -103,7 +114,7 @@ namespace GestorSoporte
                             {
                                 text = new
                                 {
-                                    content = "Inicio evento: " + horaInicio +" - Sucursal: " + sucursal + "\n" + solicitadoPor + "\n\n" + nota
+                                    content = "Inicio evento: " + horaInicio +" - Sucursal: " + sucursal + "\n" + solicitadoPor + notificacionCliente +"\n" + nota
                                 }
                             }
                         }

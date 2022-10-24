@@ -357,6 +357,40 @@ namespace GestorSoporte
 
 
 
+        public static DataTable selectQuery(string query)
+        {
+            string cnString = connectString();
+
+            MySqlConnection cn = new MySqlConnection(cnString);
+
+            MySqlCommand cmd = new MySqlCommand(query, cn);
+
+            DataSet D = new DataSet();
+
+            try
+            {
+                cn.Open();
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmd);
+                D = new DataSet();
+                DA.Fill(D, "Sucursales");
+                cn.Close();
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
+
+            finally
+            {
+                cn.Close();
+            }
+
+            return D.Tables["Sucursales"];
+
+        }
+
+
         public static DataTable VerSucursalesCliente(string id_cliente)
         {
             string cnString = connectString();

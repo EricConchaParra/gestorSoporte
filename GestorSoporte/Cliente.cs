@@ -122,8 +122,9 @@ namespace GestorSoporte
 
             txtRut.Text = cliData["rut"].ToString();
             txtRazonSocial.Text = cliData["razon_social"].ToString();
+            txtRutAdicionales.Text = cliData["revisaRutAdicional"].ToString();
             txtFantasia.Text = cliData["fantasia"].ToString();
-            txtNotas.Text = cliData["c_comercial"].ToString();
+            txtNotas.Text = Seguridad.DesEncriptar(cliData["notas"].ToString());
             cbFuncionario.SelectedValue = cliData["funcionario"].ToString();
             cbASSM.SelectedValue = cliData["assm"].ToString();
 
@@ -157,6 +158,10 @@ namespace GestorSoporte
 
             txtEmailsNotifica.Text = cliData["notificaEmails"].ToString();
 
+            if (cliData["revisaCondComercial"].ToString() == "1")
+            {
+                cbCondComercial.Checked = true;
+            }
         }
 
         private void checkCampos()
@@ -198,7 +203,7 @@ namespace GestorSoporte
             string rut = txtRut.Text;
             string razon_social = txtRazonSocial.Text;
             string fantasia = txtFantasia.Text;
-            string notas = txtNotas.Text;
+            string notas = Seguridad.Encriptar(txtNotas.Text);
             string funcionario = cbFuncionario.SelectedValue.ToString();
             string assm = cbASSM.SelectedValue.ToString();
             string erp = ckErp.Checked == true ? "1" : "0";
@@ -210,6 +215,9 @@ namespace GestorSoporte
             string activo = cbActivo.SelectedValue.ToString();
             string notificaCliente = cbNotificaCliente.Checked == true ? "1" : "0";
             string notificaEmails = txtEmailsNotifica.Text;
+            string revisaCondComercial = cbCondComercial.Checked == true ? "1" : "0";
+            string revisaRutAdicional = txtRutAdicionales.Text;
+
 
             //Graba los datos en MySQL
 
@@ -221,8 +229,9 @@ namespace GestorSoporte
 
             string sCmd = string.Format("insert into clientes" +
                 " (rut, razon_social, fantasia, notas, funcionario, assm, " +
-                "erp, erp_fecha_actual, dte, cert_autorizado, cert_vencimiento, dte_fecha_actual, activo, notificaCliente, notificaEmails) " +
-                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');",
+                "erp, erp_fecha_actual, dte, cert_autorizado, cert_vencimiento, dte_fecha_actual, activo, notificaCliente, notificaEmails, revisaCondComercial," +
+                "revisaRutAdicional ) " +
+                "values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}');",
                 rut,
                 razon_social,
                 fantasia,
@@ -237,7 +246,9 @@ namespace GestorSoporte
                 dte_fecha_actual,
                 activo,
                 notificaCliente,
-                notificaEmails);
+                notificaEmails,
+                revisaCondComercial,
+                revisaRutAdicional);
 
             //alerta.error("", sCmd);
 
@@ -271,7 +282,7 @@ namespace GestorSoporte
             string rut = txtRut.Text;
             string razon_social = txtRazonSocial.Text;
             string fantasia = txtFantasia.Text;
-            string notas = txtNotas.Text;
+            string notas = Seguridad.Encriptar(txtNotas.Text);
             string funcionario = cbFuncionario.SelectedValue.ToString();
             string assm = cbASSM.SelectedValue.ToString();
             string erp = ckErp.Checked == true ? "1" : "0";
@@ -283,6 +294,8 @@ namespace GestorSoporte
             string activo = cbActivo.SelectedValue.ToString();
             string notificaCliente = cbNotificaCliente.Checked == true ? "1" : "0";
             string notificaEmails = txtEmailsNotifica.Text;
+            string revisaCondComercial = cbCondComercial.Checked == true ? "1" : "0";
+            string revisaRutAdicional = txtRutAdicionales.Text;
 
             //Graba los datos en MySQL
 
@@ -297,7 +310,7 @@ namespace GestorSoporte
                 " set razon_social = '{1}', fantasia = '{2}', notas = '{3}', funcionario = '{4}', " +
                 " assm = '{5}', erp = '{6}', erp_fecha_actual = '{7}', dte = '{8}', cert_autorizado = '{9}'," +
                 " cert_vencimiento = '{10}', dte_fecha_actual = '{11}', activo = '{12}', notificaCliente =  '{13}'," +
-                " notificaEmails = '{14}'" +
+                " notificaEmails = '{14}', revisaCondComercial = '{15}', revisaRutAdicional = '{16}'" +
                 " where rut = '{0}'",
                 rut,
                 razon_social,
@@ -313,7 +326,9 @@ namespace GestorSoporte
                 dte_fecha_actual,
                 activo,
                 notificaCliente,
-                notificaEmails);
+                notificaEmails,
+                revisaCondComercial,
+                revisaRutAdicional);
 
             //alerta.informacion("", sCmd);
 
@@ -367,6 +382,18 @@ namespace GestorSoporte
                 dateDte.Visible = false;
                 txtUserSII.Enabled = false;
                 dateCertificado.Visible = false;
+            }
+        }
+
+        private void cbCondComercial_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCondComercial.Checked)
+            {
+                txtRutAdicionales.Enabled = true;
+            }
+            else
+            {
+                txtRutAdicionales.Enabled = false;
             }
         }
     }

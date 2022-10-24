@@ -55,12 +55,14 @@
             this.cbCobrar = new System.Windows.Forms.CheckBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.txtSolicitante = new System.Windows.Forms.TextBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.txtDescripcionEvento = new System.Windows.Forms.TextBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.cbOrigen = new System.Windows.Forms.ComboBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.txtNotaSoporte = new System.Windows.Forms.TextBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.txtDescripcionEvento = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtTiempo = new System.Windows.Forms.TextBox();
             this.btnCronometro = new System.Windows.Forms.Button();
@@ -82,23 +84,22 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.btnAnyTeam = new System.Windows.Forms.Button();
-            this.txtSolicitante = new System.Windows.Forms.TextBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.cbIncluyeInfoComercial = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox11.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSsh
@@ -250,7 +251,7 @@
             this.groupBox4.Controls.Add(this.btnGrabaNota);
             this.groupBox4.Controls.Add(this.txtNotas);
             this.groupBox4.ForeColor = System.Drawing.Color.Navy;
-            this.groupBox4.Location = new System.Drawing.Point(12, 413);
+            this.groupBox4.Location = new System.Drawing.Point(12, 431);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(780, 149);
             this.groupBox4.TabIndex = 8;
@@ -276,13 +277,14 @@
             this.groupBox5.ForeColor = System.Drawing.Color.Navy;
             this.groupBox5.Location = new System.Drawing.Point(152, 110);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(640, 297);
+            this.groupBox5.Size = new System.Drawing.Size(640, 315);
             this.groupBox5.TabIndex = 9;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Eventos de soporte";
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.cbIncluyeInfoComercial);
             this.groupBox10.Controls.Add(this.cbNotificaCliente);
             this.groupBox10.Controls.Add(this.cbSlack);
             this.groupBox10.Controls.Add(this.cbFinEvento);
@@ -290,7 +292,7 @@
             this.groupBox10.Controls.Add(this.btnSend);
             this.groupBox10.Location = new System.Drawing.Point(12, 148);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(147, 143);
+            this.groupBox10.Size = new System.Drawing.Size(147, 161);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Acciones";
@@ -299,7 +301,7 @@
             // 
             this.cbNotificaCliente.AutoSize = true;
             this.cbNotificaCliente.ForeColor = System.Drawing.Color.Black;
-            this.cbNotificaCliente.Location = new System.Drawing.Point(14, 38);
+            this.cbNotificaCliente.Location = new System.Drawing.Point(14, 55);
             this.cbNotificaCliente.Name = "cbNotificaCliente";
             this.cbNotificaCliente.Size = new System.Drawing.Size(111, 17);
             this.cbNotificaCliente.TabIndex = 5;
@@ -312,7 +314,7 @@
             this.cbSlack.Checked = true;
             this.cbSlack.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbSlack.ForeColor = System.Drawing.Color.Black;
-            this.cbSlack.Location = new System.Drawing.Point(14, 57);
+            this.cbSlack.Location = new System.Drawing.Point(14, 73);
             this.cbSlack.Name = "cbSlack";
             this.cbSlack.Size = new System.Drawing.Size(107, 17);
             this.cbSlack.TabIndex = 6;
@@ -324,7 +326,7 @@
             // 
             this.cbFinEvento.AutoSize = true;
             this.cbFinEvento.ForeColor = System.Drawing.Color.Black;
-            this.cbFinEvento.Location = new System.Drawing.Point(14, 76);
+            this.cbFinEvento.Location = new System.Drawing.Point(14, 91);
             this.cbFinEvento.Name = "cbFinEvento";
             this.cbFinEvento.Size = new System.Drawing.Size(101, 17);
             this.cbFinEvento.TabIndex = 7;
@@ -346,7 +348,7 @@
             // btnSend
             // 
             this.btnSend.ForeColor = System.Drawing.Color.Black;
-            this.btnSend.Location = new System.Drawing.Point(9, 100);
+            this.btnSend.Location = new System.Drawing.Point(9, 115);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(131, 29);
             this.btnSend.TabIndex = 8;
@@ -362,10 +364,44 @@
             this.groupBox8.Controls.Add(this.groupBox11);
             this.groupBox8.Location = new System.Drawing.Point(165, 20);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(462, 271);
+            this.groupBox8.Size = new System.Drawing.Size(462, 289);
             this.groupBox8.TabIndex = 0;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Registro Soporte";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.txtSolicitante);
+            this.groupBox14.Location = new System.Drawing.Point(6, 19);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(259, 46);
+            this.groupBox14.TabIndex = 1;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Solicitante";
+            // 
+            // txtSolicitante
+            // 
+            this.txtSolicitante.Location = new System.Drawing.Point(6, 18);
+            this.txtSolicitante.Name = "txtSolicitante";
+            this.txtSolicitante.Size = new System.Drawing.Size(241, 20);
+            this.txtSolicitante.TabIndex = 0;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.txtDescripcionEvento);
+            this.groupBox9.Location = new System.Drawing.Point(6, 71);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(450, 46);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Descripción del Evento";
+            // 
+            // txtDescripcionEvento
+            // 
+            this.txtDescripcionEvento.Location = new System.Drawing.Point(6, 18);
+            this.txtDescripcionEvento.Name = "txtDescripcionEvento";
+            this.txtDescripcionEvento.Size = new System.Drawing.Size(438, 20);
+            this.txtDescripcionEvento.TabIndex = 2;
             // 
             // groupBox13
             // 
@@ -390,7 +426,7 @@
             this.groupBox11.Controls.Add(this.txtNotaSoporte);
             this.groupBox11.Location = new System.Drawing.Point(7, 125);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(449, 140);
+            this.groupBox11.Size = new System.Drawing.Size(449, 158);
             this.groupBox11.TabIndex = 4;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Notas";
@@ -401,25 +437,8 @@
             this.txtNotaSoporte.Multiline = true;
             this.txtNotaSoporte.Name = "txtNotaSoporte";
             this.txtNotaSoporte.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtNotaSoporte.Size = new System.Drawing.Size(437, 111);
+            this.txtNotaSoporte.Size = new System.Drawing.Size(437, 133);
             this.txtNotaSoporte.TabIndex = 3;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.txtDescripcionEvento);
-            this.groupBox9.Location = new System.Drawing.Point(6, 71);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(450, 46);
-            this.groupBox9.TabIndex = 3;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Descripción del Evento";
-            // 
-            // txtDescripcionEvento
-            // 
-            this.txtDescripcionEvento.Location = new System.Drawing.Point(6, 18);
-            this.txtDescripcionEvento.Name = "txtDescripcionEvento";
-            this.txtDescripcionEvento.Size = new System.Drawing.Size(438, 20);
-            this.txtDescripcionEvento.TabIndex = 2;
             // 
             // groupBox6
             // 
@@ -649,29 +668,24 @@
             this.btnAnyTeam.UseVisualStyleBackColor = true;
             this.btnAnyTeam.Click += new System.EventHandler(this.btnAnyTeam_Click);
             // 
-            // txtSolicitante
+            // cbIncluyeInfoComercial
             // 
-            this.txtSolicitante.Location = new System.Drawing.Point(6, 18);
-            this.txtSolicitante.Name = "txtSolicitante";
-            this.txtSolicitante.Size = new System.Drawing.Size(241, 20);
-            this.txtSolicitante.TabIndex = 0;
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.txtSolicitante);
-            this.groupBox14.Location = new System.Drawing.Point(6, 19);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(259, 46);
-            this.groupBox14.TabIndex = 1;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Solicitante";
+            this.cbIncluyeInfoComercial.AutoSize = true;
+            this.cbIncluyeInfoComercial.Enabled = false;
+            this.cbIncluyeInfoComercial.ForeColor = System.Drawing.Color.Black;
+            this.cbIncluyeInfoComercial.Location = new System.Drawing.Point(14, 37);
+            this.cbIncluyeInfoComercial.Name = "cbIncluyeInfoComercial";
+            this.cbIncluyeInfoComercial.Size = new System.Drawing.Size(125, 17);
+            this.cbIncluyeInfoComercial.TabIndex = 9;
+            this.cbIncluyeInfoComercial.Text = "Incluir info. comercial";
+            this.cbIncluyeInfoComercial.UseVisualStyleBackColor = true;
             // 
             // controlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(804, 574);
+            this.ClientSize = new System.Drawing.Size(804, 589);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -696,11 +710,13 @@
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox8.ResumeLayout(false);
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -708,8 +724,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -770,5 +784,6 @@
         private System.Windows.Forms.CheckBox cbNotificaCliente;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.TextBox txtSolicitante;
+        private System.Windows.Forms.CheckBox cbIncluyeInfoComercial;
     }
 }

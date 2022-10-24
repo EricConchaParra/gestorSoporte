@@ -49,7 +49,7 @@ namespace GestorSoporte
             //message.To.Add(new MailboxAddress("Eric Concha", "ericconchaexl@gmail.com")); --> Para un solo receptor
             message.To.AddRange(listaCorreos); // --> Para una lista separada por comas ya parseada
             
-            //message.Cc.Add(new MailboxAddress("Eric Concha", "ericconchaexl@gmail.com")); --> Para enviar copias
+            message.Bcc.Add(new MailboxAddress("Eric Concha", "ericconchaexl@gmail.com"));// --> Para enviar copias Cc, para enviar copias ocultas Bcc
 
             message.Subject = "Informe de soporte realizado";
 

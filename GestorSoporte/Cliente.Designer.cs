@@ -39,6 +39,9 @@
             this.txtNotas = new System.Windows.Forms.TextBox();
             this.cbFuncionario = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtEmailsNotifica = new System.Windows.Forms.TextBox();
+            this.cbNotificaCliente = new System.Windows.Forms.CheckBox();
             this.cbASSM = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -57,13 +60,15 @@
             this.dateErp = new System.Windows.Forms.DateTimePicker();
             this.ckDte = new System.Windows.Forms.CheckBox();
             this.ckErp = new System.Windows.Forms.CheckBox();
-            this.cbNotificaCliente = new System.Windows.Forms.CheckBox();
-            this.txtEmailsNotifica = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtRutAdicionales = new System.Windows.Forms.TextBox();
+            this.cbCondComercial = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -133,7 +138,7 @@
             this.txtNotas.Location = new System.Drawing.Point(6, 18);
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
-            this.txtNotas.Size = new System.Drawing.Size(380, 91);
+            this.txtNotas.Size = new System.Drawing.Size(343, 91);
             this.txtNotas.TabIndex = 5;
             // 
             // cbFuncionario
@@ -166,10 +171,38 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Navy;
             this.groupBox1.Location = new System.Drawing.Point(11, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(359, 266);
+            this.groupBox1.Size = new System.Drawing.Size(359, 347);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Identificación";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label4.Location = new System.Drawing.Point(11, 226);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(228, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Emails para notificación (separados por comas)";
+            // 
+            // txtEmailsNotifica
+            // 
+            this.txtEmailsNotifica.Location = new System.Drawing.Point(14, 243);
+            this.txtEmailsNotifica.Name = "txtEmailsNotifica";
+            this.txtEmailsNotifica.Size = new System.Drawing.Size(327, 20);
+            this.txtEmailsNotifica.TabIndex = 13;
+            // 
+            // cbNotificaCliente
+            // 
+            this.cbNotificaCliente.AutoSize = true;
+            this.cbNotificaCliente.ForeColor = System.Drawing.Color.Black;
+            this.cbNotificaCliente.Location = new System.Drawing.Point(189, 192);
+            this.cbNotificaCliente.Name = "cbNotificaCliente";
+            this.cbNotificaCliente.Size = new System.Drawing.Size(162, 17);
+            this.cbNotificaCliente.TabIndex = 12;
+            this.cbNotificaCliente.Text = "¿Notifica Servicio vía Email?";
+            this.cbNotificaCliente.UseVisualStyleBackColor = true;
             // 
             // cbASSM
             // 
@@ -216,7 +249,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Navy;
             this.groupBox2.Location = new System.Drawing.Point(376, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(394, 116);
+            this.groupBox2.Size = new System.Drawing.Size(366, 116);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Notas";
@@ -255,7 +288,7 @@
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(776, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(754, 24);
             this.menuStrip1.TabIndex = 18;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -293,7 +326,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.Navy;
             this.groupBox3.Location = new System.Drawing.Point(376, 149);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(394, 144);
+            this.groupBox3.Size = new System.Drawing.Size(366, 124);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Productos";
@@ -348,40 +381,56 @@
             this.ckErp.UseVisualStyleBackColor = true;
             this.ckErp.CheckedChanged += new System.EventHandler(this.ckErp_CheckedChanged);
             // 
-            // cbNotificaCliente
+            // groupBox4
             // 
-            this.cbNotificaCliente.AutoSize = true;
-            this.cbNotificaCliente.ForeColor = System.Drawing.Color.Black;
-            this.cbNotificaCliente.Location = new System.Drawing.Point(189, 192);
-            this.cbNotificaCliente.Name = "cbNotificaCliente";
-            this.cbNotificaCliente.Size = new System.Drawing.Size(162, 17);
-            this.cbNotificaCliente.TabIndex = 12;
-            this.cbNotificaCliente.Text = "¿Notifica Servicio vía Email?";
-            this.cbNotificaCliente.UseVisualStyleBackColor = true;
+            this.groupBox4.BackColor = System.Drawing.Color.LightBlue;
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.txtRutAdicionales);
+            this.groupBox4.Controls.Add(this.cbCondComercial);
+            this.groupBox4.ForeColor = System.Drawing.Color.Navy;
+            this.groupBox4.Location = new System.Drawing.Point(376, 279);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(366, 95);
+            this.groupBox4.TabIndex = 18;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Comercial";
             // 
-            // txtEmailsNotifica
+            // label6
             // 
-            this.txtEmailsNotifica.Location = new System.Drawing.Point(14, 238);
-            this.txtEmailsNotifica.Name = "txtEmailsNotifica";
-            this.txtEmailsNotifica.Size = new System.Drawing.Size(327, 20);
-            this.txtEmailsNotifica.TabIndex = 13;
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(8, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(196, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "RUT adicionales (separados por comas)";
             // 
-            // label4
+            // txtRutAdicionales
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(11, 221);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(228, 13);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Emails para notificación (separados por comas)";
+            this.txtRutAdicionales.Location = new System.Drawing.Point(11, 62);
+            this.txtRutAdicionales.Name = "txtRutAdicionales";
+            this.txtRutAdicionales.Size = new System.Drawing.Size(227, 20);
+            this.txtRutAdicionales.TabIndex = 16;
+            // 
+            // cbCondComercial
+            // 
+            this.cbCondComercial.AutoSize = true;
+            this.cbCondComercial.ForeColor = System.Drawing.Color.Black;
+            this.cbCondComercial.Location = new System.Drawing.Point(9, 17);
+            this.cbCondComercial.Name = "cbCondComercial";
+            this.cbCondComercial.Size = new System.Drawing.Size(258, 17);
+            this.cbCondComercial.TabIndex = 15;
+            this.cbCondComercial.Text = "¿Revisa condiciones comerciales desde el ERP?";
+            this.cbCondComercial.UseVisualStyleBackColor = true;
+            this.cbCondComercial.CheckedChanged += new System.EventHandler(this.cbCondComercial_CheckedChanged);
             // 
             // Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(776, 305);
+            this.ClientSize = new System.Drawing.Size(754, 386);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -402,6 +451,8 @@
             this.menuStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,5 +491,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtEmailsNotifica;
         private System.Windows.Forms.CheckBox cbNotificaCliente;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox cbCondComercial;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtRutAdicionales;
     }
 }

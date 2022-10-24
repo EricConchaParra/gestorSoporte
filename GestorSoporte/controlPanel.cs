@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace GestorSoporte
 {
@@ -39,6 +40,7 @@ namespace GestorSoporte
         public string[] datos_usuario;
         public string report = "";
         public string horaInicio = "";
+        public string infoComercial = "";
 
 
         private void controlPanel_Load(object sender, EventArgs e)
@@ -47,6 +49,7 @@ namespace GestorSoporte
             //this.ControlBox = false;
             Carga();
 
+            
             //Inicio el contador automáticamente al abrir cPanel
             btnCronometro.Text = "Pausar";
             stopWatch.Start();
@@ -74,7 +77,39 @@ namespace GestorSoporte
             
             clieData = MySql.DatosCliente(sucData["fk_cliente"].ToString()); //para que carge siempre los datos del cliente
 
-            
+
+            //Cliente chequea doc vencidos?
+            if(clieData.Rows[0]["revisaCondComercial"].ToString() == "1")
+            {
+                //Muestra aviso y escribe respuesta en notas de soporte, si corresponde
+                
+                //txtNotaSoporte.AppendText(ErpTool.checkCondComerciales(sucData["fk_cliente"].ToString()));
+                infoComercial += ErpTool.checkCondComerciales(sucData["fk_cliente"].ToString());
+
+                //Cliente tiene RUTs adicionales?
+                string rutAdicionales = clieData.Rows[0]["revisaRutAdicional"].ToString();
+                if (rutAdicionales.Length > 0)
+                {
+                    //Transforma string separado por comas a lista
+                    string[] rutAdi = rutAdicionales.Split(',').ToArray();
+
+                    foreach (string ra in rutAdi)
+                    {
+                        //Muestra aviso y escribe respuesta en notas de soporte, si corresponde
+                        infoComercial += ErpTool.checkCondComerciales(ra);
+                    }
+
+                }
+
+                //Si existen situaciones comercial activa la opción de enviar info comercial, si no permanece inactiva
+                if (infoComercial.Length > 10)
+                {
+                    cbIncluyeInfoComercial.Enabled = true;
+                    cbIncluyeInfoComercial.Checked = true;
+                }
+            }
+
+
             //Preparo todo para slack (si corresponde)
             if (sucData["slack"].ToString() == "1")
             {
@@ -539,7 +574,7 @@ namespace GestorSoporte
             txtTiempo.Text = ts.ToString("mm\\:ss");
         }
 
-        public void sendSlack(string descripcion, string mensaje, bool cobrar, bool fin, string origen, string solicitante)
+        public void sendSlack(string descripcion, string mensaje, bool cobrar, bool fin, string origen, string solicitante, bool notifCliente)
         {
             //Evento en curso o finalizado
             string tipoEvento = "finalizado :white_check_mark:";
@@ -556,6 +591,16 @@ namespace GestorSoporte
             {
                 solicitadoPor = "*Solicitado por*: " + solicitante + "\n";
             }
+
+            //Si se notifica al cliente, incluye una nota con los correos a los que se copio
+            string notificacionCliente = "";
+
+            if (notifCliente)
+            {
+                string emails = MySql.DatosCliente(sucData["fk_cliente"].ToString()).Rows[0]["notificaEmails"].ToString();
+                notificacionCliente = "*Notificado a*: " + emails + "\n";
+            }
+
             
             //Obtengo Datos Cliente
             string nombreCliente = clieData.Rows[0]["fantasia"].ToString();
@@ -580,6 +625,7 @@ namespace GestorSoporte
                        "Evento " + tipoEvento + "\n" +   
                        "*Cliente:* " + nombreCliente + " - " + sucData["sucursal_nombre"] + "\n" +
                        solicitadoPor +
+                       notificacionCliente + 
                        "*Atendido por:* " + datos_usuario[3] + "\n" +
                        "*Hora inicio:* " + horaInicio + "\n" +
                        (tiempo > 0 ? "*Tiempo (minutos):* " + tiempo.ToString() + "\n": "") +
@@ -606,7 +652,7 @@ namespace GestorSoporte
             if (slack && !fin)
             {
                 this.UseWaitCursor = true;
-                sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text);
+                sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text, notifCliente);
                 this.UseWaitCursor = false;
             }
             if (fin)
@@ -632,24 +678,28 @@ namespace GestorSoporte
                 string cobranza = cobrar ? "Si" : "No";
 
                 sendNotion.grabaSoporte(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, sucData["sucursal_nombre"].ToString(),
-                                        funcionario, tiempo, fecha, cobranza, horaInicio, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text);
+                                        funcionario, tiempo, fecha, cobranza, horaInicio, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text, notifCliente, sucData["fk_cliente"].ToString());
 
                 if (slack)
                 {
-                    sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text);
+                    sendSlack(txtDescripcionEvento.Text, txtNotaSoporte.Text, cobrar, fin, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text, notifCliente);
                 }
 
                 //Notifica al cliente via email
                 if (notifCliente)
                 {
-                    DialogResult ans = MessageBox.Show("¿Estás seguro de que quieres notificar al cliente?",
+                    string correos = MySql.DatosCliente(sucData["fk_cliente"].ToString()).Rows[0]["notificaEmails"].ToString();
+                    DialogResult ans = MessageBox.Show("Se enviará una notificación a: " + correos + "\n¿Estás seguro?",
                         "Responda por favor",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question);
 
                     if (ans == DialogResult.Yes)
                     {
-                        sendMail.sendMailToClient(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, sucData["sucursal_nombre"].ToString(),
+                        string notasEmail = txtNotaSoporte.Text.Replace("\n", "<br>");
+                        notasEmail += cbIncluyeInfoComercial.Enabled == true ? "<br><br>--------<br><br>Además informamos que " + infoComercial.Replace("\r\n", "<br>") : "";
+
+                        sendMail.sendMailToClient(txtDescripcionEvento.Text, notasEmail, fantasiaCliente, sucData["sucursal_nombre"].ToString(),
                                         funcionario, tiempo, fechaCorreo, cobrar, horaInicio, txtSolicitante.Text, sucData["fk_cliente"].ToString());
                     }
                 }
