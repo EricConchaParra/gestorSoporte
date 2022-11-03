@@ -11,7 +11,7 @@ Listado de clientes, busqueda rápida
 
 Panel de Control
 
-![image](https://user-images.githubusercontent.com/85537653/184450717-84ce4d78-8b0a-4db5-8e7c-7ae495859a1e.png)
+![image](https://user-images.githubusercontent.com/85537653/199720586-82e47a67-a7c5-4bbf-816f-a736dfe32bb4.png)
 
 Bóveda de claves
 
