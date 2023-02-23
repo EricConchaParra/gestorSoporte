@@ -1,9 +1,12 @@
 {
-    "encrypted" : "0",  
-    "key" : "ENTERYOURKEY",
-    "ip" : "192.168.2.11",
+    "encripted" : "0",
+    "key" : "YOURKEY",
+    "ip" : "192.168.2.111",
     "puerto" : "3306",
-    "user" : "MIUSER",
-    "pass" : "MIPASS",
-    "database" : "s_manager"
-  }
+    "user" : "USER",
+    "pass" : "",
+    "database" : "s_manager",
+    "slack" : "https://hooks.slack.com/",
+    "notion_key" : "secret_",
+    "notion_database" : "2d202"
+}

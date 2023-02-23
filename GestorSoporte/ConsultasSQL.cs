@@ -128,7 +128,7 @@ namespace GestorSoporte
         /// 
         private void ExportarDataGridViewExcel(DataGridView grd)
         {
-            SaveFileDialog fichero = new SaveFileDialog();
+           /*SaveFileDialog fichero = new SaveFileDialog();
             fichero.Filter = "Excel (*.xls)|*.xls";
             if (fichero.ShowDialog() == DialogResult.OK)
             {
@@ -161,7 +161,7 @@ namespace GestorSoporte
                 libros_trabajo.Close(true);
                 aplicacion.Quit();
                 Cursor.Current = Cursors.Default;
-            }
+            }*/
 
         }
 
