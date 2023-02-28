@@ -49,6 +49,7 @@
             this.btnGrabaNota = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.cbIncluyeInfoComercial = new System.Windows.Forms.CheckBox();
             this.cbNotificaCliente = new System.Windows.Forms.CheckBox();
             this.cbSlack = new System.Windows.Forms.CheckBox();
             this.cbFinEvento = new System.Windows.Forms.CheckBox();
@@ -84,7 +85,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.btnAnyTeam = new System.Windows.Forms.Button();
-            this.cbIncluyeInfoComercial = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -169,7 +169,7 @@
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1146, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -241,7 +241,7 @@
             this.txtNotas.Multiline = true;
             this.txtNotas.Name = "txtNotas";
             this.txtNotas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtNotas.Size = new System.Drawing.Size(768, 93);
+            this.txtNotas.Size = new System.Drawing.Size(325, 332);
             this.txtNotas.TabIndex = 7;
             this.txtNotas.TabStop = false;
             this.txtNotas.Click += new System.EventHandler(this.txtNotasCliente_Click);
@@ -251,9 +251,9 @@
             this.groupBox4.Controls.Add(this.btnGrabaNota);
             this.groupBox4.Controls.Add(this.txtNotas);
             this.groupBox4.ForeColor = System.Drawing.Color.Navy;
-            this.groupBox4.Location = new System.Drawing.Point(12, 431);
+            this.groupBox4.Location = new System.Drawing.Point(798, 36);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(780, 149);
+            this.groupBox4.Size = new System.Drawing.Size(343, 389);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Notas";
@@ -296,6 +296,18 @@
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Acciones";
+            // 
+            // cbIncluyeInfoComercial
+            // 
+            this.cbIncluyeInfoComercial.AutoSize = true;
+            this.cbIncluyeInfoComercial.Enabled = false;
+            this.cbIncluyeInfoComercial.ForeColor = System.Drawing.Color.Black;
+            this.cbIncluyeInfoComercial.Location = new System.Drawing.Point(14, 37);
+            this.cbIncluyeInfoComercial.Name = "cbIncluyeInfoComercial";
+            this.cbIncluyeInfoComercial.Size = new System.Drawing.Size(125, 17);
+            this.cbIncluyeInfoComercial.TabIndex = 9;
+            this.cbIncluyeInfoComercial.Text = "Incluir info. comercial";
+            this.cbIncluyeInfoComercial.UseVisualStyleBackColor = true;
             // 
             // cbNotificaCliente
             // 
@@ -668,30 +680,18 @@
             this.btnAnyTeam.UseVisualStyleBackColor = true;
             this.btnAnyTeam.Click += new System.EventHandler(this.btnAnyTeam_Click);
             // 
-            // cbIncluyeInfoComercial
-            // 
-            this.cbIncluyeInfoComercial.AutoSize = true;
-            this.cbIncluyeInfoComercial.Enabled = false;
-            this.cbIncluyeInfoComercial.ForeColor = System.Drawing.Color.Black;
-            this.cbIncluyeInfoComercial.Location = new System.Drawing.Point(14, 37);
-            this.cbIncluyeInfoComercial.Name = "cbIncluyeInfoComercial";
-            this.cbIncluyeInfoComercial.Size = new System.Drawing.Size(125, 17);
-            this.cbIncluyeInfoComercial.TabIndex = 9;
-            this.cbIncluyeInfoComercial.Text = "Incluir info. comercial";
-            this.cbIncluyeInfoComercial.UseVisualStyleBackColor = true;
-            // 
             // controlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(804, 589);
+            this.ClientSize = new System.Drawing.Size(1146, 446);
             this.Controls.Add(this.groupBox12);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

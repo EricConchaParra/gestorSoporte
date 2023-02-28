@@ -93,6 +93,14 @@ namespace GestorSoporte
                         }
                     },
 
+                    Modalidad = new
+                    {
+                        select = new
+                        {
+                            name = "Remoto"
+                        }
+                    },
+
                     Fecha = new
                     {
                         date = new
