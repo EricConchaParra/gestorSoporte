@@ -119,6 +119,8 @@ namespace GestorSoporte
 
             MySqlCommand cmd = new MySqlCommand(consulta,cn);
 
+            //alerta.error("Error", consulta);
+
             DataSet D = new DataSet();
 
             try

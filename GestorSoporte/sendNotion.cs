@@ -12,7 +12,7 @@ namespace GestorSoporte
     {
         public static void grabaSoporte(string descripcion, string nota, string fantasiaCliente, string sucursal, 
                                         string funcionario, int tiempo, string fecha, string cobrar, string horaInicio,
-                                        string origen, string solicitante, bool notifCliente, string rut)
+                                        string origen, string solicitante, bool notifCliente, string rut, string tipo)
         {
             //Si hay o no un solicitante
             string solicitadoPor = "";
@@ -79,6 +79,19 @@ namespace GestorSoporte
                             name = origen
                         }
                     },
+                    
+                    Tipo = new
+                    {
+                        select = new
+                        {
+                            name = tipo
+                        }
+                    },
+
+                    //Solicitado = new
+                    //{
+                    //    rich_text = solicitante
+                    //},
 
                     Minutos = new
                     {
@@ -144,6 +157,8 @@ namespace GestorSoporte
             var response = client.Execute(request);
 
             var error = response.ErrorMessage; //Si viene vacío, significa que se envió bien
+
+            alerta.error("Error", response.StatusDescription);
 
             }
             catch (Exception ex)

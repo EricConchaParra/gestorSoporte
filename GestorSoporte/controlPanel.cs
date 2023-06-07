@@ -74,7 +74,24 @@ namespace GestorSoporte
             cbOrigen.DataSource = dtOrigen;
             cbOrigen.DisplayMember = "nombre";
             cbOrigen.ValueMember = "codigo";
-            
+
+            //Inicio checkbox tipo
+            DataTable dtTipo = new DataTable();
+            dtTipo.Columns.Add("nombre");
+            dtTipo.Columns.Add("codigo");
+            dtTipo.Rows.Add("ASSM - Mantenimiento", "ASSM - Mantenimiento");
+            dtTipo.Rows.Add("ASSM - Soporte Software", "ASSM - Soporte Software");
+            dtTipo.Rows.Add("ASSM", "ASSM");
+            dtTipo.Rows.Add("R. Cliente - Serv. Informaticos", "R. Cliente - Serv. Informaticos");
+            dtTipo.Rows.Add("R. Zenitx - Bug", "R. Zenitx - Bug");
+            dtTipo.Rows.Add("ASSM - Fuera Horario", "ASSM - Fuera Horario");
+
+            cbTipo.DataSource = dtTipo;
+            cbTipo.DisplayMember = "nombre";
+            cbTipo.ValueMember = "codigo";
+
+
+
             clieData = MySql.DatosCliente(sucData["fk_cliente"].ToString()); //para que carge siempre los datos del cliente
 
 
@@ -678,7 +695,7 @@ namespace GestorSoporte
                 string cobranza = cobrar ? "Si" : "No";
 
                 sendNotion.grabaSoporte(txtDescripcionEvento.Text, txtNotaSoporte.Text, fantasiaCliente, sucData["sucursal_nombre"].ToString(),
-                                        funcionario, tiempo, fecha, cobranza, horaInicio, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text, notifCliente, sucData["fk_cliente"].ToString());
+                                        funcionario, tiempo, fecha, cobranza, horaInicio, cbOrigen.SelectedValue.ToString(), txtSolicitante.Text, notifCliente, sucData["fk_cliente"].ToString(), cbTipo.SelectedValue.ToString());
 
                 if (slack)
                 {
@@ -750,6 +767,11 @@ namespace GestorSoporte
         {
             Credenciales at = new Credenciales(sucData["fk_cliente"].ToString());
             at.Show();
+        }
+
+        private void groupBox14_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -85,6 +85,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.btnAnyTeam = new System.Windows.Forms.Button();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.cbTipo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -100,6 +102,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSsh
@@ -370,6 +373,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.groupBox15);
             this.groupBox8.Controls.Add(this.groupBox14);
             this.groupBox8.Controls.Add(this.groupBox9);
             this.groupBox8.Controls.Add(this.groupBox13);
@@ -389,7 +393,8 @@
             this.groupBox14.Size = new System.Drawing.Size(259, 46);
             this.groupBox14.TabIndex = 1;
             this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Solicitante";
+            this.groupBox14.Text = "Solicitado por";
+            this.groupBox14.Enter += new System.EventHandler(this.groupBox14_Enter);
             // 
             // txtSolicitante
             // 
@@ -401,7 +406,7 @@
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.txtDescripcionEvento);
-            this.groupBox9.Location = new System.Drawing.Point(6, 71);
+            this.groupBox9.Location = new System.Drawing.Point(6, 129);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(450, 46);
             this.groupBox9.TabIndex = 3;
@@ -436,20 +441,20 @@
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.txtNotaSoporte);
-            this.groupBox11.Location = new System.Drawing.Point(7, 125);
+            this.groupBox11.Location = new System.Drawing.Point(6, 188);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(449, 158);
+            this.groupBox11.Size = new System.Drawing.Size(449, 95);
             this.groupBox11.TabIndex = 4;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Notas";
             // 
             // txtNotaSoporte
             // 
-            this.txtNotaSoporte.Location = new System.Drawing.Point(6, 19);
+            this.txtNotaSoporte.Location = new System.Drawing.Point(5, 16);
             this.txtNotaSoporte.Multiline = true;
             this.txtNotaSoporte.Name = "txtNotaSoporte";
             this.txtNotaSoporte.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtNotaSoporte.Size = new System.Drawing.Size(437, 133);
+            this.txtNotaSoporte.Size = new System.Drawing.Size(437, 73);
             this.txtNotaSoporte.TabIndex = 3;
             // 
             // groupBox6
@@ -680,6 +685,24 @@
             this.btnAnyTeam.UseVisualStyleBackColor = true;
             this.btnAnyTeam.Click += new System.EventHandler(this.btnAnyTeam_Click);
             // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.cbTipo);
+            this.groupBox15.Location = new System.Drawing.Point(7, 73);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(258, 46);
+            this.groupBox15.TabIndex = 3;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Tipo";
+            // 
+            // cbTipo
+            // 
+            this.cbTipo.FormattingEnabled = true;
+            this.cbTipo.Location = new System.Drawing.Point(6, 17);
+            this.cbTipo.Name = "cbTipo";
+            this.cbTipo.Size = new System.Drawing.Size(240, 21);
+            this.cbTipo.TabIndex = 1;
+            // 
             // controlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,6 +747,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -785,5 +809,7 @@
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.TextBox txtSolicitante;
         private System.Windows.Forms.CheckBox cbIncluyeInfoComercial;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.ComboBox cbTipo;
     }
 }
