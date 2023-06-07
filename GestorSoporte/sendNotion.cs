@@ -158,7 +158,7 @@ namespace GestorSoporte
 
             var error = response.ErrorMessage; //Si viene vacío, significa que se envió bien
 
-            alerta.error("Error", response.StatusDescription);
+            //alerta.error("Error", response.StatusDescription);
 
             }
             catch (Exception ex)
