@@ -47,7 +47,7 @@ En la carpeta donde se encuetra el .exe, se debe existir un archivo llamado conf
   "database" : "s_manager"
 }
 ```
-`encripted` : `"0"` indica que `user` y `pass` no están encriptados (solo aplica en este archivo). Si `"1"` entonces datos están encriptados usando la `key` indicada.
+`encrypted` : `"0"` indica que `user` y `pass` no están encriptados (solo aplica en este archivo). Si `"1"` entonces datos están encriptados usando la `key` indicada.
 
 `key`: Clave que se utiliza para la encriptación de la información en Base de Datos y en este archivo el `user` y `pass`
 
